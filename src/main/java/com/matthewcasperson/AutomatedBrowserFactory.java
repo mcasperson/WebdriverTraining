@@ -1,5 +1,7 @@
 package com.matthewcasperson;
 
+import com.matthewcasperson.decorators.ChromeAutomatedBrowserDecorator;
+
 public class AutomatedBrowserFactory {
     public AutomatedBrowser getAutomatedBrowser(String browser) {
         if ("Chrome".equalsIgnoreCase(browser)) {

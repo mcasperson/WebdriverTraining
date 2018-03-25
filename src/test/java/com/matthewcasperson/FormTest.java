@@ -7,10 +7,10 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class FormTest {
+class FormTest {
     @ParameterizedTest
     @MethodSource("browserProvider")
-    public void testTextInput(String browser) {
+    void testTextInput(String browser) {
         final AutomatedBrowser automatedBrowser = new AutomatedBrowserFactory().getAutomatedBrowser(browser);
         try {
             automatedBrowser.init();
