@@ -12,16 +12,11 @@
         function interactionMessage(message) {
             document.getElementById('message').textContent = message;
         }
-
-        function submitForm(message) {
-            interactionMessage(message);
-            return false;
-        }
     </script>
 </head>
 <body>
     <div id="message"></div>
-    <form id="testform" onsubmit="return submitForm('Form Submitted')">
+    <form id="testform" onsubmit="interactionMessage('Form Submitted'); return false">
         <button id="testbutton" type="button" onclick="interactionMessage('Button Clicked')">Form Button</button>
         <input id="testtext" type="text" oninput="interactionMessage('Text Input Changed')">
         <select id="testselect" onchange="interactionMessage('Select Changed')">
@@ -46,5 +41,7 @@
         <div><input id="testcheckbox2" type="checkbox" name="vehicle" value="Car" checked onchange="interactionMessage('Checkbox Changed')"> I have a car</div>
         <input id="testsubmit" type="submit">
     </form>
+    <img src="java.png" width="128" heigh="128" onclick="interactionMessage('Image Clicked')">
+    <div onclick="interactionMessage('Div Clicked')">I am a div</div>
 </body>
 </html>
