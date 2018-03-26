@@ -75,4 +75,9 @@ public class AutomatedBrowserImpl implements AutomatedBrowser {
     public void populateTextBoxWithId(String elementId, String text) {
         webDriver.findElement(By.id(elementId)).sendKeys(text);
     }
+
+    @Override
+    public void clickLinkWithText(String text) {
+        webDriver.findElement(By.linkText(text)).click();
+    }
 }

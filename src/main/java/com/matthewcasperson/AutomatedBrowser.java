@@ -24,4 +24,6 @@ public interface AutomatedBrowser {
     void maximizeWindow();
 
     void populateTextBoxWithId(String elementId, String text);
+
+    void clickLinkWithText(String text);
 }

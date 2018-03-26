@@ -70,4 +70,9 @@ public class AutomatedBrowserDecorator implements AutomatedBrowser {
     public void populateTextBoxWithId(String elementId, String text) {
         automatedBrowser.populateTextBoxWithId(elementId, text);
     }
+
+    @Override
+    public void clickLinkWithText(String text) {
+        automatedBrowser.clickLinkWithText(text);
+    }
 }

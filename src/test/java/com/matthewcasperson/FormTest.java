@@ -1,5 +1,6 @@
 package com.matthewcasperson;
 
+import com.matthewcasperson.pages.ticketmonster.TicketMonster;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -10,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class FormTest {
     private static Stream<String> browserProvider() {
         return Stream.of(
-                "BrowserStackIPhone"
+                "Chrome"
         );
     }
 
@@ -55,5 +56,22 @@ class FormTest {
 
     private String getMessageText(AutomatedBrowser automatedBrowser) {
         return automatedBrowser.getTextFromElementWithId("message");
+    }
+
+    @ParameterizedTest
+    @MethodSource("browserProvider")
+    void teicketMonster(String browser) {
+        final AutomatedBrowser automatedBrowser = new AutomatedBrowserFactory().getAutomatedBrowser(browser);
+        try {
+            automatedBrowser.init();
+            automatedBrowser.maximizeWindow();
+            automatedBrowser.goTo("https://ticket-monster.herokuapp.com/");
+
+            final TicketMonster ticketMonster = new TicketMonster(automatedBrowser);
+            ticketMonster.getWelcomePage().open();
+            ticketMonster.getWelcomePage().buyTickets();
+        } finally {
+            automatedBrowser.destroy();
+        }
     }
 }
