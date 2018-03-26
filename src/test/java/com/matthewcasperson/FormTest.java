@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FormTest {
-    static Stream<String> browserProvider() {
+    private static Stream<String> browserProvider() {
         return Stream.of(
                 "BrowserStackEdge"
         );

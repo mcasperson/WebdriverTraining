@@ -11,8 +11,8 @@ import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class BrowserStackDecorator extends AutomatedBrowserDecorator {
-    public static final String USERNAME_ENV = "BROWSERSTACK_USERNAME";
-    public static final String AUTOMATE_KEY_ENV = "BROWSERSTACK_KEY";
+    private static final String USERNAME_ENV = "BROWSERSTACK_USERNAME";
+    private static final String AUTOMATE_KEY_ENV = "BROWSERSTACK_KEY";
 
     public BrowserStackDecorator(final AutomatedBrowser automatedBrowser) {
         super(automatedBrowser);
