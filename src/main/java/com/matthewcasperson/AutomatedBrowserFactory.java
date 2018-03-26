@@ -27,17 +27,21 @@ public class AutomatedBrowserFactory {
 
     private AutomatedBrowser getBrowserStackBrowser() {
         return new BrowserStackDecorator(
-                new BrowserStackEdgeDecorator(
-                        new AutomatedBrowserImpl()
+                new ImplicitWaitDecorator(10,
+                        new BrowserStackEdgeDecorator(
+                                new AutomatedBrowserImpl()
+                        )
                 )
         );
     }
 
     private AutomatedBrowser getBrowserStackIPhone() {
         return new BrowserStackDecorator(
-                new BrowserStackIPhoneDecorator(
-                        new IgnoreWindowSizeErrorsDecorator(
-                                new AutomatedBrowserImpl()
+                new ImplicitWaitDecorator(10,
+                        new BrowserStackIPhoneDecorator(
+                                new IgnoreWindowSizeErrorsDecorator(
+                                        new AutomatedBrowserImpl()
+                                )
                         )
                 )
         );

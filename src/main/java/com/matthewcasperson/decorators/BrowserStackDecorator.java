@@ -8,7 +8,6 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.concurrent.TimeUnit;
 
 public class BrowserStackDecorator extends AutomatedBrowserDecorator {
     private static final String USERNAME_ENV = "BROWSERSTACK_USERNAME";
@@ -23,7 +22,6 @@ public class BrowserStackDecorator extends AutomatedBrowserDecorator {
         try {
             final String URL = "https://" + System.getenv(USERNAME_ENV) + ":" + System.getenv(AUTOMATE_KEY_ENV) + "@hub-cloud.browserstack.com/wd/hub";
             final WebDriver webDriver = new RemoteWebDriver(new URL(URL), getDesiredCapabilities());
-            webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
             automatedBrowser.setWebDriver(webDriver);
         } catch (MalformedURLException ex) {
             throw new ConfigurationException(ex);

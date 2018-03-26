@@ -26,4 +26,6 @@ public interface AutomatedBrowser {
     void populateTextBoxWithId(String elementId, String text);
 
     void clickLinkWithText(String text);
+
+    void clickLinkWithText(String buy_tickets_now, int wait);
 }

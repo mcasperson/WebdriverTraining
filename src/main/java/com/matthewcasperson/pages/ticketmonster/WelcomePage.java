@@ -14,6 +14,6 @@ public class WelcomePage {
     }
 
     public void buyTickets() {
-        automatedBrowser.clickLinkWithText("Buy tickets now");
+        automatedBrowser.clickLinkWithText("Buy tickets now", 10);
     }
 }

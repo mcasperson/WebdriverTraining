@@ -3,7 +3,9 @@ package com.matthewcasperson;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -79,5 +81,11 @@ public class AutomatedBrowserImpl implements AutomatedBrowser {
     @Override
     public void clickLinkWithText(String text) {
         webDriver.findElement(By.linkText(text)).click();
+    }
+
+    @Override
+    public void clickLinkWithText(String text, int waitTime) {
+        final WebDriverWait wait = new WebDriverWait(webDriver, waitTime);
+        wait.until(ExpectedConditions.elementToBeClickable((By.linkText(text)))).click();
     }
 }
