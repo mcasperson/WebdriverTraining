@@ -25,8 +25,29 @@ class FormTest {
             automatedBrowser.clickElementWithId("testbutton");
             assertEquals("Button Clicked", getMessageText(automatedBrowser));
 
-            automatedBrowser.selectItemByTextFromSelectWithId("testselect", "Option 2.1");
+            automatedBrowser.selectOptionByTextFromSelectWithId("testselect", "Option 2.1");
             assertEquals("Select Changed", getMessageText(automatedBrowser));
+
+            automatedBrowser.populateTextBoxWithId("testtext", "This is some test text");
+            assertEquals("Text Input Changed", getMessageText(automatedBrowser));
+
+            automatedBrowser.populateTextBoxWithId("testtextarea", "This is some test text in a text area");
+            assertEquals("Text Area Changed", getMessageText(automatedBrowser));
+
+            automatedBrowser.clickElementWithId("testradio1");
+            assertEquals("Radio Button Changed", getMessageText(automatedBrowser));
+
+            automatedBrowser.clickElementWithId("testcheckbox1");
+            assertEquals("Checkbox Changed", getMessageText(automatedBrowser));
+
+            automatedBrowser.clickElementWithId("testsubmit");
+            assertEquals("Form Submitted", getMessageText(automatedBrowser));
+
+            automatedBrowser.clickElementWithId("testimage");
+            assertEquals("Image Clicked", getMessageText(automatedBrowser));
+
+            automatedBrowser.clickElementWithId("testdiv");
+            assertEquals("Div Clicked", getMessageText(automatedBrowser));
         } finally {
             automatedBrowser.destroy();
         }

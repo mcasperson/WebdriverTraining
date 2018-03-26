@@ -19,7 +19,9 @@ public interface AutomatedBrowser {
 
     void destroy();
 
-    void selectItemByTextFromSelectWithId(String selectId, String optionText);
+    void selectOptionByTextFromSelectWithId(String selectId, String optionText);
 
     void maximizeWindow();
+
+    void populateTextBoxWithId(String elementId, String text);
 }

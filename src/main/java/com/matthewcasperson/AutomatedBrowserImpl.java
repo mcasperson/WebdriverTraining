@@ -62,12 +62,17 @@ public class AutomatedBrowserImpl implements AutomatedBrowser {
     }
 
     @Override
-    public void selectItemByTextFromSelectWithId(String selectId, String optionText) {
+    public void selectOptionByTextFromSelectWithId(String selectId, String optionText) {
         new Select(webDriver.findElement(By.id(selectId))).selectByVisibleText(optionText);
     }
 
     @Override
     public void maximizeWindow() {
         webDriver.manage().window().maximize();
+    }
+
+    @Override
+    public void populateTextBoxWithId(String elementId, String text) {
+        webDriver.findElement(By.id(elementId)).sendKeys(text);
     }
 }
