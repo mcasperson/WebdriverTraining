@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class FormTest {
     private static Stream<String> browserProvider() {
         return Stream.of(
-                "BrowserStackEdge"
+                "BrowserStackIPhone"
         );
     }
 
@@ -20,6 +20,7 @@ class FormTest {
         final AutomatedBrowser automatedBrowser = new AutomatedBrowserFactory().getAutomatedBrowser(browser);
         try {
             automatedBrowser.init();
+            automatedBrowser.maximizeWindow();
             automatedBrowser.goTo("http://webdriver-tests.s3-website-us-east-1.amazonaws.com/form.html");
             automatedBrowser.clickElementWithId("testbutton");
             assertEquals("Button Clicked", getMessageText(automatedBrowser));

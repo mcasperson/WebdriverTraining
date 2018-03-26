@@ -20,4 +20,6 @@ public interface AutomatedBrowser {
     void destroy();
 
     void selectItemByTextFromSelectWithId(String selectId, String optionText);
+
+    void maximizeWindow();
 }

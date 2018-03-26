@@ -60,4 +60,9 @@ public class AutomatedBrowserDecorator implements AutomatedBrowser {
     public void selectItemByTextFromSelectWithId(String selectId, String optionText) {
         automatedBrowser.selectItemByTextFromSelectWithId(selectId, optionText);
     }
+
+    @Override
+    public void maximizeWindow() {
+        automatedBrowser.maximizeWindow();
+    }
 }

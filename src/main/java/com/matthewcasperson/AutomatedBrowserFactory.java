@@ -1,8 +1,6 @@
 package com.matthewcasperson;
 
-import com.matthewcasperson.decorators.BrowserStackDecorator;
-import com.matthewcasperson.decorators.BrowserStackEdgeDecorator;
-import com.matthewcasperson.decorators.ChromeDecorator;
+import com.matthewcasperson.decorators.*;
 
 public class AutomatedBrowserFactory {
     public AutomatedBrowser getAutomatedBrowser(String browser) {
@@ -12,6 +10,10 @@ public class AutomatedBrowserFactory {
 
         if ("BrowserStackEdge".equalsIgnoreCase(browser)) {
             return getBrowserStackBrowser();
+        }
+
+        if ("BrowserStackIPhone".equalsIgnoreCase(browser)) {
+            return getBrowserStackIPhone();
         }
 
         throw new IllegalArgumentException("Unknown browser " + browser);
@@ -27,6 +29,16 @@ public class AutomatedBrowserFactory {
         return new BrowserStackDecorator(
                 new BrowserStackEdgeDecorator(
                         new AutomatedBrowserImpl()
+                )
+        );
+    }
+
+    private AutomatedBrowser getBrowserStackIPhone() {
+        return new BrowserStackDecorator(
+                new BrowserStackIPhoneDecorator(
+                        new IgnoreWindowSizeErrorsDecorator(
+                                new AutomatedBrowserImpl()
+                        )
                 )
         );
     }
