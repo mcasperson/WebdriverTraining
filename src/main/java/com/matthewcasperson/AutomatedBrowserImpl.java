@@ -2,6 +2,8 @@ package com.matthewcasperson;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.Select;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -21,6 +23,11 @@ public class AutomatedBrowserImpl implements AutomatedBrowser {
     @Override
     public void init() {
         // this is implemented by a decorator
+    }
+
+    @Override
+    public DesiredCapabilities getDesiredCapabilities() {
+        return new DesiredCapabilities();
     }
 
     @Override
@@ -50,7 +57,12 @@ public class AutomatedBrowserImpl implements AutomatedBrowser {
     @Override
     public void destroy() {
         if (webDriver != null) {
-            webDriver.close();
+            webDriver.quit();
         }
+    }
+
+    @Override
+    public void selectItemByTextFromSelectWithId(String selectId, String optionText) {
+        new Select(webDriver.findElement(By.id(selectId))).selectByVisibleText(optionText);
     }
 }

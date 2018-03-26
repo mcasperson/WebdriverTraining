@@ -1,64 +1,63 @@
 package com.matthewcasperson;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+
+import static com.google.common.base.Preconditions.checkNotNull;
 
 public class AutomatedBrowserDecorator implements AutomatedBrowser {
     protected AutomatedBrowser automatedBrowser;
 
     public AutomatedBrowserDecorator(AutomatedBrowser automatedBrowser) {
+        checkNotNull(automatedBrowser);
+
         this.automatedBrowser = automatedBrowser;
     }
 
     @Override
-    public void setWebDriver(WebDriver webDriver) {
-        if (automatedBrowser != null) {
-            automatedBrowser.setWebDriver(webDriver);
-        }
+    public WebDriver getWebDriver() {
+        return automatedBrowser.getWebDriver();
     }
 
     @Override
-    public WebDriver getWebDriver() {
-        if (automatedBrowser != null) {
-            return automatedBrowser.getWebDriver();
-        }
+    public void setWebDriver(WebDriver webDriver) {
 
-        return null;
+        automatedBrowser.setWebDriver(webDriver);
     }
 
     @Override
     public void init() {
-        if (automatedBrowser != null) {
-            automatedBrowser.init();
-        }
+        automatedBrowser.init();
+    }
+
+    @Override
+    public DesiredCapabilities getDesiredCapabilities() {
+        return automatedBrowser.getDesiredCapabilities();
     }
 
     @Override
     public void goTo(String url) {
-        if (automatedBrowser != null) {
-            automatedBrowser.goTo(url);
-        }
+        automatedBrowser.goTo(url);
     }
 
     @Override
     public void clickElementWithId(String testbutton) {
-        if (automatedBrowser != null) {
-            automatedBrowser.clickElementWithId(testbutton);
-        }
+        automatedBrowser.clickElementWithId(testbutton);
+
     }
 
     @Override
     public String getTextFromElementWithId(String message) {
-        if (automatedBrowser != null) {
-            return automatedBrowser.getTextFromElementWithId(message);
-        }
-
-        return null;
+        return automatedBrowser.getTextFromElementWithId(message);
     }
 
     @Override
     public void destroy() {
-        if (automatedBrowser != null) {
-            automatedBrowser.destroy();
-        }
+        automatedBrowser.destroy();
+    }
+
+    @Override
+    public void selectItemByTextFromSelectWithId(String selectId, String optionText) {
+        automatedBrowser.selectItemByTextFromSelectWithId(selectId, optionText);
     }
 }

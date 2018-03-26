@@ -1,6 +1,7 @@
 package com.matthewcasperson;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 public interface AutomatedBrowser {
     void setWebDriver(WebDriver webDriver);
@@ -8,11 +9,15 @@ public interface AutomatedBrowser {
 
     void init();
 
-    void goTo(String testFormUrl);
+    DesiredCapabilities getDesiredCapabilities();
 
-    void clickElementWithId(String testbutton);
+    void goTo(String url);
 
-    String getTextFromElementWithId(String message);
+    void clickElementWithId(String elementId);
+
+    String getTextFromElementWithId(String elementId);
 
     void destroy();
+
+    void selectItemByTextFromSelectWithId(String selectId, String optionText);
 }
