@@ -85,7 +85,66 @@ public class AutomatedBrowserImpl implements AutomatedBrowser {
 
     @Override
     public void clickLinkWithText(String text, int waitTime) {
-        final WebDriverWait wait = new WebDriverWait(webDriver, waitTime);
-        wait.until(ExpectedConditions.elementToBeClickable((By.linkText(text)))).click();
+        if (waitTime <= 0) {
+            clickLinkWithText(text);
+        } else {
+            final WebDriverWait wait = new WebDriverWait(webDriver, waitTime);
+            wait.until(ExpectedConditions.elementToBeClickable((By.linkText(text)))).click();
+        }
+    }
+
+    @Override
+    public void clickElementWithXPath(String xpath) {
+        webDriver.findElement(By.xpath(xpath)).click();
+    }
+
+    @Override
+    public void selectOptionByTextFromSelectWithId(String elementId, String optionText, int waitTime) {
+        if (waitTime <= 0) {
+            selectOptionByTextFromSelectWithId(elementId, optionText);
+        } else {
+            final WebDriverWait wait = new WebDriverWait(webDriver, waitTime);
+            new Select(wait.until(ExpectedConditions.elementToBeClickable((By.id(elementId))))).selectByVisibleText(optionText);
+        }
+    }
+
+    @Override
+    public void clickElementWithXPath(String xpath, int waitTime) {
+        if (waitTime <= 0) {
+            clickElementWithXPath(xpath);
+        } else {
+            final WebDriverWait wait = new WebDriverWait(webDriver, waitTime);
+            wait.until(ExpectedConditions.elementToBeClickable((By.xpath(xpath)))).click();
+        }
+    }
+
+    @Override
+    public void populateTextBoxWithXpath(String xpath, String text) {
+        webDriver.findElement(By.xpath(xpath)).sendKeys(text);
+    }
+
+    @Override
+    public void populateTextBoxWithXpath(String xpath, String text, int waitTime) {
+        if (waitTime <= 0) {
+            populateTextBoxWithXpath(xpath, text);
+        } else {
+            final WebDriverWait wait = new WebDriverWait(webDriver, waitTime);
+            wait.until(ExpectedConditions.elementToBeClickable((By.xpath(xpath)))).sendKeys(text);
+        }
+    }
+
+    @Override
+    public String getTextFromElementWithXpath(String xpath) {
+        return webDriver.findElement(By.xpath(xpath)).getText();
+    }
+
+    @Override
+    public String getTextFromElementWithXpath(String xpath, int waitTime) {
+        if (waitTime <= 0) {
+            return getTextFromElementWithXpath(xpath);
+        } else {
+            final WebDriverWait wait = new WebDriverWait(webDriver, waitTime);
+            return wait.until(ExpectedConditions.presenceOfElementLocated((By.xpath(xpath)))).getText();
+        }
     }
 }

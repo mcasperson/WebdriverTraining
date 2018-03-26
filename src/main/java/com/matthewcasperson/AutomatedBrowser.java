@@ -27,5 +27,19 @@ public interface AutomatedBrowser {
 
     void clickLinkWithText(String text);
 
-    void clickLinkWithText(String buy_tickets_now, int wait);
+    void clickLinkWithText(String text, int waitTime);
+
+    void clickElementWithXPath(String xpath);
+
+    void selectOptionByTextFromSelectWithId(String elementId, String optionText, int waitTime);
+
+    void clickElementWithXPath(String xpath, int waitTime);
+
+    void populateTextBoxWithXpath(String xpath, String text);
+
+    void populateTextBoxWithXpath(String xpath, String text, int waitTime);
+
+    String getTextFromElementWithXpath(String xpath);
+
+    String getTextFromElementWithXpath(String xpath, int waitTime);
 }

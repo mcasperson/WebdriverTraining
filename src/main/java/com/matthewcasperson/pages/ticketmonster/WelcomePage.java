@@ -2,6 +2,8 @@ package com.matthewcasperson.pages.ticketmonster;
 
 import com.matthewcasperson.AutomatedBrowser;
 
+import static com.matthewcasperson.pages.ticketmonster.TicketMonster.WAIT_TIME;
+
 public class WelcomePage {
     private final AutomatedBrowser automatedBrowser;
 
@@ -14,6 +16,6 @@ public class WelcomePage {
     }
 
     public void buyTickets() {
-        automatedBrowser.clickLinkWithText("Buy tickets now", 10);
+        automatedBrowser.clickLinkWithText("Buy tickets now", WAIT_TIME);
     }
 }

@@ -75,4 +75,44 @@ public class AutomatedBrowserDecorator implements AutomatedBrowser {
     public void clickLinkWithText(String text) {
         automatedBrowser.clickLinkWithText(text);
     }
+
+    @Override
+    public void clickLinkWithText(String text, int wait) {
+        automatedBrowser.clickLinkWithText(text, wait);
+    }
+
+    @Override
+    public void clickElementWithXPath(String xpath) {
+        automatedBrowser.clickElementWithXPath(xpath);
+    }
+
+    @Override
+    public void selectOptionByTextFromSelectWithId(String elementId, String optionText, int waitTime) {
+        automatedBrowser.selectOptionByTextFromSelectWithId(elementId, optionText, waitTime);
+    }
+
+    @Override
+    public void clickElementWithXPath(String xpath, int waitTime) {
+        automatedBrowser.clickElementWithXPath(xpath, waitTime);
+    }
+
+    @Override
+    public void populateTextBoxWithXpath(String xpath, String text) {
+        automatedBrowser.populateTextBoxWithXpath(xpath, text);
+    }
+
+    @Override
+    public void populateTextBoxWithXpath(String xpath, String text, int waitTime) {
+        automatedBrowser.populateTextBoxWithXpath(xpath, text, waitTime);
+    }
+
+    @Override
+    public String getTextFromElementWithXpath(String xpath) {
+        return automatedBrowser.getTextFromElementWithXpath(xpath);
+    }
+
+    @Override
+    public String getTextFromElementWithXpath(String xpath, int waitTime) {
+        return automatedBrowser.getTextFromElementWithXpath(xpath, waitTime);
+    }
 }

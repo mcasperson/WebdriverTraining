@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class FormTest {
     private static Stream<String> browserProvider() {
@@ -65,11 +66,21 @@ class FormTest {
         try {
             automatedBrowser.init();
             automatedBrowser.maximizeWindow();
-            automatedBrowser.goTo("https://ticket-monster.herokuapp.com/");
 
             final TicketMonster ticketMonster = new TicketMonster(automatedBrowser);
             ticketMonster.getWelcomePage().open();
             ticketMonster.getWelcomePage().buyTickets();
+            ticketMonster.getEvents().selectConcert();
+            ticketMonster.getEvents().selectRockConcert();
+            ticketMonster.getEvents().selectSydneyVenue();
+            ticketMonster.getEvents().orderTickets();
+            ticketMonster.getBookings().selectFrontLeft();
+            ticketMonster.getBookings().addAdultTickets(2);
+            ticketMonster.getBookings().addTickets();
+            ticketMonster.getBookings().setEmail("a@a.com");
+            ticketMonster.getBookings().checkout();
+            final String confirmation = ticketMonster.getBookings().getConfirmationHeader();
+            assertTrue(confirmation.contains("confirmed"));
         } finally {
             automatedBrowser.destroy();
         }

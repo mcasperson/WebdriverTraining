@@ -23,6 +23,7 @@ public class BrowserStackDecorator extends AutomatedBrowserDecorator {
             final String URL = "https://" + System.getenv(USERNAME_ENV) + ":" + System.getenv(AUTOMATE_KEY_ENV) + "@hub-cloud.browserstack.com/wd/hub";
             final WebDriver webDriver = new RemoteWebDriver(new URL(URL), getDesiredCapabilities());
             automatedBrowser.setWebDriver(webDriver);
+            automatedBrowser.init();
         } catch (MalformedURLException ex) {
             throw new ConfigurationException(ex);
         }
