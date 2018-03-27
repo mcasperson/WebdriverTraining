@@ -47,6 +47,11 @@ public class AutomatedBrowserDecorator implements AutomatedBrowser {
     }
 
     @Override
+    public void clickElementWithId(String elementId, int waitTime) {
+        automatedBrowser.clickElementWithId(elementId, waitTime);
+    }
+
+    @Override
     public String getTextFromElementWithId(String message) {
         return automatedBrowser.getTextFromElementWithId(message);
     }

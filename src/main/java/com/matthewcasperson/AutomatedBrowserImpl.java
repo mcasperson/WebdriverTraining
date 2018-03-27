@@ -49,6 +49,16 @@ public class AutomatedBrowserImpl implements AutomatedBrowser {
     }
 
     @Override
+    public void clickElementWithId(String elementId, int waitTime) {
+        if (waitTime <= 0) {
+            clickElementWithId(elementId);
+        } else {
+            final WebDriverWait wait = new WebDriverWait(webDriver, waitTime);
+            wait.until(ExpectedConditions.elementToBeClickable((By.id(elementId)))).click();
+        }
+    }
+
+    @Override
     public String getTextFromElementWithId(final String elementId) {
         checkNotNull(webDriver);
         checkNotNull(elementId);

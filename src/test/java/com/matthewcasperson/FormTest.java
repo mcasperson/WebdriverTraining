@@ -24,6 +24,11 @@ class FormTest {
             automatedBrowser.init();
             automatedBrowser.maximizeWindow();
             automatedBrowser.goTo("http://webdriver-tests.s3-website-us-east-1.amazonaws.com/form.html");
+
+            automatedBrowser.clickElementWithId("testnewdiv");
+            automatedBrowser.clickElementWithId("testdiv3", 10);
+
+
             automatedBrowser.clickElementWithId("testbutton");
             assertEquals("Button Clicked", getMessageText(automatedBrowser));
 

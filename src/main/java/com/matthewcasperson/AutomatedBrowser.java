@@ -4,8 +4,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 public interface AutomatedBrowser {
-    void setWebDriver(WebDriver webDriver);
     WebDriver getWebDriver();
+
+    void setWebDriver(WebDriver webDriver);
 
     void init();
 
@@ -14,6 +15,8 @@ public interface AutomatedBrowser {
     void goTo(String url);
 
     void clickElementWithId(String elementId);
+
+    void clickElementWithId(String elementId, int waitTime);
 
     String getTextFromElementWithId(String elementId);
 
