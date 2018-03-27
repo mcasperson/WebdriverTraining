@@ -41,29 +41,34 @@ public class AutomatedBrowserImpl implements AutomatedBrowser {
     }
 
     @Override
-    public void clickElementWithId(final String elementId) {
+    public void clickElementWithId(final String id) {
         checkNotNull(webDriver);
-        checkNotNull(elementId);
+        checkNotNull(id);
 
-        webDriver.findElement(By.id(elementId)).click();
+        webDriver.findElement(By.id(id)).click();
     }
 
     @Override
-    public void clickElementWithId(String elementId, int waitTime) {
+    public void clickElementWithId(String id, int waitTime) {
         if (waitTime <= 0) {
-            clickElementWithId(elementId);
+            clickElementWithId(id);
         } else {
             final WebDriverWait wait = new WebDriverWait(webDriver, waitTime);
-            wait.until(ExpectedConditions.elementToBeClickable((By.id(elementId)))).click();
+            wait.until(ExpectedConditions.elementToBeClickable((By.id(id)))).click();
         }
     }
 
     @Override
-    public String getTextFromElementWithId(final String elementId) {
+    public String getTextFromElementWithId(final String id) {
         checkNotNull(webDriver);
-        checkNotNull(elementId);
+        checkNotNull(id);
 
-        return webDriver.findElement(By.id(elementId)).getText();
+        return webDriver.findElement(By.id(id)).getText();
+    }
+
+    @Override
+    public String getTextFromElementWithId(String id, int wait) {
+        return null;
     }
 
     @Override
@@ -74,8 +79,8 @@ public class AutomatedBrowserImpl implements AutomatedBrowser {
     }
 
     @Override
-    public void selectOptionByTextFromSelectWithId(String selectId, String optionText) {
-        new Select(webDriver.findElement(By.id(selectId))).selectByVisibleText(optionText);
+    public void selectOptionByTextFromSelectWithId(String id, String optionText) {
+        new Select(webDriver.findElement(By.id(id))).selectByVisibleText(optionText);
     }
 
     @Override
@@ -84,8 +89,13 @@ public class AutomatedBrowserImpl implements AutomatedBrowser {
     }
 
     @Override
-    public void populateTextBoxWithId(String elementId, String text) {
-        webDriver.findElement(By.id(elementId)).sendKeys(text);
+    public void populateTextBoxWithId(String id, String text) {
+        webDriver.findElement(By.id(id)).sendKeys(text);
+    }
+
+    @Override
+    public void populateTextBoxWithId(String id, String text, int waitTime) {
+
     }
 
     @Override
@@ -109,12 +119,42 @@ public class AutomatedBrowserImpl implements AutomatedBrowser {
     }
 
     @Override
-    public void selectOptionByTextFromSelectWithId(String elementId, String optionText, int waitTime) {
+    public void selectOptionByTextFromSelectWithId(String id, String optionText, int waitTime) {
         if (waitTime <= 0) {
-            selectOptionByTextFromSelectWithId(elementId, optionText);
+            selectOptionByTextFromSelectWithId(id, optionText);
         } else {
             final WebDriverWait wait = new WebDriverWait(webDriver, waitTime);
-            new Select(wait.until(ExpectedConditions.elementToBeClickable((By.id(elementId))))).selectByVisibleText(optionText);
+            new Select(wait.until(ExpectedConditions.elementToBeClickable((By.id(id))))).selectByVisibleText(optionText);
+        }
+    }
+
+    @Override
+    public void selectOptionByTextFromSelectWithXPath(String xpath, String optionText) {
+        new Select(webDriver.findElement(By.xpath(xpath))).selectByVisibleText(optionText);
+    }
+
+    @Override
+    public void selectOptionByTextFromSelectWithXPath(String xpath, String optionText, int waitTime) {
+        if (waitTime <= 0) {
+            selectOptionByTextFromSelectWithXPath(xpath, optionText);
+        } else {
+            final WebDriverWait wait = new WebDriverWait(webDriver, waitTime);
+            new Select(wait.until(ExpectedConditions.elementToBeClickable((By.xpath(xpath))))).selectByVisibleText(optionText);
+        }
+    }
+
+    @Override
+    public void selectOptionByTextFromSelectWithCSS(String css, String optionText) {
+        new Select(webDriver.findElement(By.cssSelector(css))).selectByVisibleText(optionText);
+    }
+
+    @Override
+    public void selectOptionByTextFromSelectWithCSS(String css, String optionText, int waitTime) {
+        if (waitTime <= 0) {
+            selectOptionByTextFromSelectWithCSS(css, optionText);
+        } else {
+            final WebDriverWait wait = new WebDriverWait(webDriver, waitTime);
+            new Select(wait.until(ExpectedConditions.elementToBeClickable((By.cssSelector(css))))).selectByVisibleText(optionText);
         }
     }
 
@@ -129,14 +169,29 @@ public class AutomatedBrowserImpl implements AutomatedBrowser {
     }
 
     @Override
-    public void populateTextBoxWithXpath(String xpath, String text) {
+    public void clickElementWithCSS(String css) {
+        webDriver.findElement(By.cssSelector(css)).click();
+    }
+
+    @Override
+    public void clickElementWithCSS(String css, int waitTime) {
+        if (waitTime <= 0) {
+            clickElementWithCSS(css);
+        } else {
+            final WebDriverWait wait = new WebDriverWait(webDriver, waitTime);
+            wait.until(ExpectedConditions.elementToBeClickable((By.cssSelector(css)))).click();
+        }
+    }
+
+    @Override
+    public void populateTextBoxWithXPath(String xpath, String text) {
         webDriver.findElement(By.xpath(xpath)).sendKeys(text);
     }
 
     @Override
-    public void populateTextBoxWithXpath(String xpath, String text, int waitTime) {
+    public void populateTextBoxWithXPath(String xpath, String text, int waitTime) {
         if (waitTime <= 0) {
-            populateTextBoxWithXpath(xpath, text);
+            populateTextBoxWithXPath(xpath, text);
         } else {
             final WebDriverWait wait = new WebDriverWait(webDriver, waitTime);
             wait.until(ExpectedConditions.elementToBeClickable((By.xpath(xpath)))).sendKeys(text);
@@ -144,17 +199,47 @@ public class AutomatedBrowserImpl implements AutomatedBrowser {
     }
 
     @Override
-    public String getTextFromElementWithXpath(String xpath) {
+    public void populateTextBoxWithCSS(String css, String text) {
+        webDriver.findElement(By.cssSelector(css)).sendKeys(text);
+    }
+
+    @Override
+    public void populateTextBoxWithCSS(String css, String text, int waitTime) {
+        if (waitTime <= 0) {
+            populateTextBoxWithCSS(css, text);
+        } else {
+            final WebDriverWait wait = new WebDriverWait(webDriver, waitTime);
+            wait.until(ExpectedConditions.elementToBeClickable((By.cssSelector(css)))).sendKeys(text);
+        }
+    }
+
+    @Override
+    public String getTextFromElementWithXPath(String xpath) {
         return webDriver.findElement(By.xpath(xpath)).getText();
     }
 
     @Override
-    public String getTextFromElementWithXpath(String xpath, int waitTime) {
+    public String getTextFromElementWithXPath(String xpath, int waitTime) {
         if (waitTime <= 0) {
-            return getTextFromElementWithXpath(xpath);
+            return getTextFromElementWithXPath(xpath);
         } else {
             final WebDriverWait wait = new WebDriverWait(webDriver, waitTime);
             return wait.until(ExpectedConditions.presenceOfElementLocated((By.xpath(xpath)))).getText();
+        }
+    }
+
+    @Override
+    public String getTextFromElementWithCSS(String css) {
+        return webDriver.findElement(By.cssSelector(css)).getText();
+    }
+
+    @Override
+    public String getTextFromElementWithCSS(String css, int waitTime) {
+        if (waitTime <= 0) {
+            return getTextFromElementWithCSS(css);
+        } else {
+            final WebDriverWait wait = new WebDriverWait(webDriver, waitTime);
+            return wait.until(ExpectedConditions.presenceOfElementLocated((By.cssSelector(css)))).getText();
         }
     }
 }

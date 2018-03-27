@@ -18,7 +18,7 @@ class FormTest {
 
     @ParameterizedTest
     @MethodSource("browserProvider")
-    void testTextInput(String browser) {
+    void testWithIDs(String browser) {
         final AutomatedBrowser automatedBrowser = new AutomatedBrowserFactory().getAutomatedBrowser(browser);
         try {
             automatedBrowser.init();
@@ -27,8 +27,7 @@ class FormTest {
 
             automatedBrowser.clickElementWithId("testnewdiv");
             automatedBrowser.clickElementWithId("testdiv3", 10);
-
-
+            
             automatedBrowser.clickElementWithId("testbutton");
             assertEquals("Button Clicked", getMessageText(automatedBrowser));
 
@@ -60,13 +59,99 @@ class FormTest {
         }
     }
 
+    @ParameterizedTest
+    @MethodSource("browserProvider")
+    void testWithXPaths(String browser) {
+        final AutomatedBrowser automatedBrowser = new AutomatedBrowserFactory().getAutomatedBrowser(browser);
+        try {
+            automatedBrowser.init();
+            automatedBrowser.maximizeWindow();
+            automatedBrowser.goTo("http://webdriver-tests.s3-website-us-east-1.amazonaws.com/form.html");
+
+            automatedBrowser.clickElementWithXPath("//*[@id=\"testnewdiv\"]");
+            automatedBrowser.clickElementWithXPath("//*[@id=\"testdiv3\"]", 10);
+
+            automatedBrowser.clickElementWithXPath("//*[@id=\"testbutton\"]");
+            assertEquals("Button Clicked", getMessageText(automatedBrowser));
+
+            automatedBrowser.selectOptionByTextFromSelectWithXPath("//*[@id=\"testselect\"]", "Option 2.1");
+            assertEquals("Select Changed", getMessageText(automatedBrowser));
+
+            automatedBrowser.populateTextBoxWithXPath("//*[@id=\"testtext\"]", "This is some test text");
+            assertEquals("Text Input Changed", getMessageText(automatedBrowser));
+
+            automatedBrowser.populateTextBoxWithXPath("//*[@id=\"testtextarea\"]", "This is some test text in a text area");
+            assertEquals("Text Area Changed", getMessageText(automatedBrowser));
+
+            automatedBrowser.clickElementWithXPath("//*[@id=\"testradio1\"]");
+            assertEquals("Radio Button Changed", getMessageText(automatedBrowser));
+
+            automatedBrowser.clickElementWithXPath("//*[@id=\"testcheckbox1\"]");
+            assertEquals("Checkbox Changed", getMessageText(automatedBrowser));
+
+            automatedBrowser.clickElementWithXPath("//*[@id=\"testsubmit\"]");
+            assertEquals("Form Submitted", getMessageText(automatedBrowser));
+
+            automatedBrowser.clickElementWithXPath("//*[@id=\"testimage\"]");
+            assertEquals("Image Clicked", getMessageText(automatedBrowser));
+
+            automatedBrowser.clickElementWithXPath("//*[@id=\"testdiv\"]");
+            assertEquals("Div Clicked", getMessageText(automatedBrowser));
+        } finally {
+            automatedBrowser.destroy();
+        }
+    }
+
+    @ParameterizedTest
+    @MethodSource("browserProvider")
+    void testWithCSS(String browser) {
+        final AutomatedBrowser automatedBrowser = new AutomatedBrowserFactory().getAutomatedBrowser(browser);
+        try {
+            automatedBrowser.init();
+            automatedBrowser.maximizeWindow();
+            automatedBrowser.goTo("http://webdriver-tests.s3-website-us-east-1.amazonaws.com/form.html");
+
+            automatedBrowser.clickElementWithCSS("#testnewdiv");
+            automatedBrowser.clickElementWithCSS("#testdiv3", 10);
+
+            automatedBrowser.clickElementWithCSS("#testbutton");
+            assertEquals("Button Clicked", getMessageText(automatedBrowser));
+
+            automatedBrowser.selectOptionByTextFromSelectWithCSS("#testselect", "Option 2.1");
+            assertEquals("Select Changed", getMessageText(automatedBrowser));
+
+            automatedBrowser.populateTextBoxWithCSS("#testtext", "This is some test text");
+            assertEquals("Text Input Changed", getMessageText(automatedBrowser));
+
+            automatedBrowser.populateTextBoxWithCSS("#testtextarea", "This is some test text in a text area");
+            assertEquals("Text Area Changed", getMessageText(automatedBrowser));
+
+            automatedBrowser.clickElementWithCSS("#testradio1");
+            assertEquals("Radio Button Changed", getMessageText(automatedBrowser));
+
+            automatedBrowser.clickElementWithCSS("#testcheckbox1");
+            assertEquals("Checkbox Changed", getMessageText(automatedBrowser));
+
+            automatedBrowser.clickElementWithCSS("#testsubmit");
+            assertEquals("Form Submitted", getMessageText(automatedBrowser));
+
+            automatedBrowser.clickElementWithCSS("#testimage");
+            assertEquals("Image Clicked", getMessageText(automatedBrowser));
+
+            automatedBrowser.clickElementWithCSS("#testdiv");
+            assertEquals("Div Clicked", getMessageText(automatedBrowser));
+        } finally {
+            automatedBrowser.destroy();
+        }
+    }
+
     private String getMessageText(AutomatedBrowser automatedBrowser) {
         return automatedBrowser.getTextFromElementWithId("message");
     }
 
     @ParameterizedTest
     @MethodSource("browserProvider")
-    void teicketMonster(String browser) {
+    void ticketMonster(String browser) {
         final AutomatedBrowser automatedBrowser = new AutomatedBrowserFactory().getAutomatedBrowser(browser);
         try {
             automatedBrowser.init();

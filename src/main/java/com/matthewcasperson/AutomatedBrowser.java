@@ -10,39 +10,63 @@ public interface AutomatedBrowser {
 
     void init();
 
+    void destroy();
+
     DesiredCapabilities getDesiredCapabilities();
 
     void goTo(String url);
 
-    void clickElementWithId(String elementId);
-
-    void clickElementWithId(String elementId, int waitTime);
-
-    String getTextFromElementWithId(String elementId);
-
-    void destroy();
-
-    void selectOptionByTextFromSelectWithId(String selectId, String optionText);
-
     void maximizeWindow();
 
-    void populateTextBoxWithId(String elementId, String text);
+    void clickElementWithId(String id);
+
+    void clickElementWithId(String id, int waitTime);
+
+    void clickElementWithXPath(String xpath);
+
+    void clickElementWithXPath(String xpath, int waitTime);
+
+    void clickElementWithCSS(String css);
+
+    void clickElementWithCSS(String css, int waitTime);
 
     void clickLinkWithText(String text);
 
     void clickLinkWithText(String text, int waitTime);
 
-    void clickElementWithXPath(String xpath);
+    void selectOptionByTextFromSelectWithId(String id, String optionText);
 
-    void selectOptionByTextFromSelectWithId(String elementId, String optionText, int waitTime);
+    void selectOptionByTextFromSelectWithId(String id, String optionText, int waitTime);
 
-    void clickElementWithXPath(String xpath, int waitTime);
+    void selectOptionByTextFromSelectWithXPath(String xpath, String optionText);
 
-    void populateTextBoxWithXpath(String xpath, String text);
+    void selectOptionByTextFromSelectWithXPath(String xpath, String optionText, int waitTime);
 
-    void populateTextBoxWithXpath(String xpath, String text, int waitTime);
+    void selectOptionByTextFromSelectWithCSS(String css, String optionText);
 
-    String getTextFromElementWithXpath(String xpath);
+    void selectOptionByTextFromSelectWithCSS(String css, String optionText, int waitTime);
 
-    String getTextFromElementWithXpath(String xpath, int waitTime);
+    void populateTextBoxWithId(String id, String text);
+
+    void populateTextBoxWithId(String id, String text, int waitTime);
+
+    void populateTextBoxWithXPath(String xpath, String text);
+
+    void populateTextBoxWithXPath(String xpath, String text, int waitTime);
+
+    void populateTextBoxWithCSS(String css, String text);
+
+    void populateTextBoxWithCSS(String css, String text, int waitTime);
+
+    String getTextFromElementWithId(String id);
+
+    String getTextFromElementWithId(String id, int wait);
+
+    String getTextFromElementWithXPath(String xpath);
+
+    String getTextFromElementWithXPath(String xpath, int waitTime);
+
+    String getTextFromElementWithCSS(String css);
+
+    String getTextFromElementWithCSS(String css, int waitTime);
 }

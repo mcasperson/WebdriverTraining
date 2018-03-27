@@ -16,7 +16,7 @@ public class BookingPage {
     }
 
     public void addAdultTickets(Integer number) {
-        automatedBrowser.populateTextBoxWithXpath(
+        automatedBrowser.populateTextBoxWithXPath(
                 "/html/body/div[2]/div[2]/div[2]/div[1]/div/div/form/div[1]/div/div/input",
                 number.toString(),
                 10);
@@ -35,6 +35,6 @@ public class BookingPage {
     }
 
     public String getConfirmationHeader() {
-        return automatedBrowser.getTextFromElementWithXpath("/html/body/div[2]/div[2]/div[1]/h2", WAIT_TIME);
+        return automatedBrowser.getTextFromElementWithXPath("/html/body/div[2]/div[2]/div[1]/h2", WAIT_TIME);
     }
 }

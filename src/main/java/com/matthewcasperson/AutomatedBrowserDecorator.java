@@ -47,13 +47,18 @@ public class AutomatedBrowserDecorator implements AutomatedBrowser {
     }
 
     @Override
-    public void clickElementWithId(String elementId, int waitTime) {
-        automatedBrowser.clickElementWithId(elementId, waitTime);
+    public void clickElementWithId(String id, int waitTime) {
+        automatedBrowser.clickElementWithId(id, waitTime);
     }
 
     @Override
     public String getTextFromElementWithId(String message) {
         return automatedBrowser.getTextFromElementWithId(message);
+    }
+
+    @Override
+    public String getTextFromElementWithId(String id, int waitTime) {
+        return automatedBrowser.getTextFromElementWithId(id, waitTime);
     }
 
     @Override
@@ -72,8 +77,13 @@ public class AutomatedBrowserDecorator implements AutomatedBrowser {
     }
 
     @Override
-    public void populateTextBoxWithId(String elementId, String text) {
-        automatedBrowser.populateTextBoxWithId(elementId, text);
+    public void populateTextBoxWithId(String id, String text) {
+        automatedBrowser.populateTextBoxWithId(id, text);
+    }
+
+    @Override
+    public void populateTextBoxWithId(String id, String text, int waitTime) {
+        automatedBrowser.populateTextBoxWithId(id, text, waitTime);
     }
 
     @Override
@@ -92,8 +102,28 @@ public class AutomatedBrowserDecorator implements AutomatedBrowser {
     }
 
     @Override
-    public void selectOptionByTextFromSelectWithId(String elementId, String optionText, int waitTime) {
-        automatedBrowser.selectOptionByTextFromSelectWithId(elementId, optionText, waitTime);
+    public void selectOptionByTextFromSelectWithId(String id, String optionText, int waitTime) {
+        automatedBrowser.selectOptionByTextFromSelectWithId(id, optionText, waitTime);
+    }
+
+    @Override
+    public void selectOptionByTextFromSelectWithXPath(String xpath, String optionText) {
+        automatedBrowser.selectOptionByTextFromSelectWithXPath(xpath, optionText);
+    }
+
+    @Override
+    public void selectOptionByTextFromSelectWithXPath(String xpath, String optionText, int waitTime) {
+        automatedBrowser.selectOptionByTextFromSelectWithXPath(xpath, optionText, waitTime);
+    }
+
+    @Override
+    public void selectOptionByTextFromSelectWithCSS(String css, String optionText) {
+        automatedBrowser.selectOptionByTextFromSelectWithCSS(css, optionText);
+    }
+
+    @Override
+    public void selectOptionByTextFromSelectWithCSS(String css, String optionText, int waitTime) {
+        automatedBrowser.selectOptionByTextFromSelectWithCSS(css, optionText, waitTime);
     }
 
     @Override
@@ -102,22 +132,52 @@ public class AutomatedBrowserDecorator implements AutomatedBrowser {
     }
 
     @Override
-    public void populateTextBoxWithXpath(String xpath, String text) {
-        automatedBrowser.populateTextBoxWithXpath(xpath, text);
+    public void clickElementWithCSS(String css) {
+        automatedBrowser.clickElementWithCSS(css);
     }
 
     @Override
-    public void populateTextBoxWithXpath(String xpath, String text, int waitTime) {
-        automatedBrowser.populateTextBoxWithXpath(xpath, text, waitTime);
+    public void clickElementWithCSS(String css, int waitTime) {
+        automatedBrowser.clickElementWithCSS(css, waitTime);
     }
 
     @Override
-    public String getTextFromElementWithXpath(String xpath) {
-        return automatedBrowser.getTextFromElementWithXpath(xpath);
+    public void populateTextBoxWithXPath(String xpath, String text) {
+        automatedBrowser.populateTextBoxWithXPath(xpath, text);
     }
 
     @Override
-    public String getTextFromElementWithXpath(String xpath, int waitTime) {
-        return automatedBrowser.getTextFromElementWithXpath(xpath, waitTime);
+    public void populateTextBoxWithXPath(String xpath, String text, int waitTime) {
+        automatedBrowser.populateTextBoxWithXPath(xpath, text, waitTime);
+    }
+
+    @Override
+    public void populateTextBoxWithCSS(String css, String text) {
+        automatedBrowser.populateTextBoxWithCSS(css, text);
+    }
+
+    @Override
+    public void populateTextBoxWithCSS(String css, String text, int waitTime) {
+        automatedBrowser.populateTextBoxWithCSS(css, text, waitTime);
+    }
+
+    @Override
+    public String getTextFromElementWithXPath(String xpath) {
+        return automatedBrowser.getTextFromElementWithXPath(xpath);
+    }
+
+    @Override
+    public String getTextFromElementWithXPath(String xpath, int waitTime) {
+        return automatedBrowser.getTextFromElementWithXPath(xpath, waitTime);
+    }
+
+    @Override
+    public String getTextFromElementWithCSS(String css) {
+        return automatedBrowser.getTextFromElementWithCSS(css);
+    }
+
+    @Override
+    public String getTextFromElementWithCSS(String css, int waitTime) {
+        return automatedBrowser.getTextFromElementWithCSS(css, waitTime);
     }
 }
