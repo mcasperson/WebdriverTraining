@@ -180,4 +180,9 @@ public class AutomatedBrowserDecorator implements AutomatedBrowser {
     public String getTextFromElementWithCSS(String css, int waitTime) {
         return automatedBrowser.getTextFromElementWithCSS(css, waitTime);
     }
+
+    @Override
+    public void alterRequestTo(String url, int responseCode) {
+        automatedBrowser.alterRequestTo(url, responseCode);
+    }
 }

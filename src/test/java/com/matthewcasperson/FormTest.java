@@ -27,7 +27,7 @@ class FormTest {
 
             automatedBrowser.clickElementWithId("testnewdiv");
             automatedBrowser.clickElementWithId("testdiv3", 10);
-            
+
             automatedBrowser.clickElementWithId("testbutton");
             assertEquals("Button Clicked", getMessageText(automatedBrowser));
 
@@ -156,6 +156,7 @@ class FormTest {
         try {
             automatedBrowser.init();
             automatedBrowser.maximizeWindow();
+            automatedBrowser.alterRequestTo(".*?\\.png", 500);
 
             final TicketMonster ticketMonster = new TicketMonster(automatedBrowser);
             ticketMonster.getWelcomePage().open();

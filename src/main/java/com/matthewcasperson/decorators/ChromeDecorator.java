@@ -12,10 +12,8 @@ public class ChromeDecorator extends AutomatedBrowserDecorator {
 
     @Override
     public void init() {
-        if (automatedBrowser != null) {
-            final WebDriver webDriver = new ChromeDriver();
-            automatedBrowser.setWebDriver(webDriver);
-            automatedBrowser.init();
-        }
+        final WebDriver webDriver = new ChromeDriver(getDesiredCapabilities());
+        automatedBrowser.setWebDriver(webDriver);
+        automatedBrowser.init();
     }
 }

@@ -22,7 +22,9 @@ public class AutomatedBrowserFactory {
     private AutomatedBrowser getChromeBrowser() {
         return new ChromeDecorator(
                 new ImplicitWaitDecorator(10,
-                        new AutomatedBrowserImpl()
+                        new BrowserMobDecorator(
+                                new AutomatedBrowserImpl()
+                        )
                 )
         );
     }

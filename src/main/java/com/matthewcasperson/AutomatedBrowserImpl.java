@@ -242,4 +242,9 @@ public class AutomatedBrowserImpl implements AutomatedBrowser {
             return wait.until(ExpectedConditions.presenceOfElementLocated((By.cssSelector(css)))).getText();
         }
     }
+
+    @Override
+    public void alterRequestTo(String url, int response) {
+
+    }
 }
