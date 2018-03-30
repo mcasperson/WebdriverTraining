@@ -2,6 +2,8 @@ package com.matthewcasperson.decoratorbase;
 
 import com.matthewcasperson.AutomatedBrowser;
 import com.matthewcasperson.AutomatedBrowserFactory;
+import cucumber.api.Scenario;
+import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import org.openqa.selenium.WebDriver;
@@ -43,6 +45,22 @@ public class AutomatedBrowserDecorator implements AutomatedBrowser {
     public void setWebDriver(WebDriver webDriver) {
         if (getAutomatedBrowser() != null) {
             getAutomatedBrowser().setWebDriver(webDriver);
+        }
+    }
+
+    @Override
+    public boolean getBrowserFailedState() {
+        if (getAutomatedBrowser() != null) {
+            return getAutomatedBrowser().getBrowserFailedState();
+        }
+
+        return false;
+    }
+
+    @Override
+    public void setBrowserFailedState(boolean failedState) {
+        if (getAutomatedBrowser() != null) {
+            getAutomatedBrowser().setBrowserFailedState(failedState);
         }
     }
 
@@ -332,5 +350,10 @@ public class AutomatedBrowserDecorator implements AutomatedBrowser {
         if (getAutomatedBrowser() != null) {
             getAutomatedBrowser().saveHarFile(file);
         }
+    }
+
+    @After
+    public void afterScenario(Scenario scenario) {
+        getAutomatedBrowser().setBrowserFailedState(scenario.isFailed());
     }
 }

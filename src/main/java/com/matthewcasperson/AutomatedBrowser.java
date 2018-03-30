@@ -8,6 +8,10 @@ public interface AutomatedBrowser {
 
     void setWebDriver(WebDriver webDriver);
 
+    boolean getBrowserFailedState();
+
+    void setBrowserFailedState(boolean failedState);
+
     void init();
 
     void destroy();

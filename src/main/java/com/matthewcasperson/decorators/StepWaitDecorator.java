@@ -36,16 +36,12 @@ public class StepWaitDecorator extends AutomatedBrowserDecorator {
     public String getTextFromElementWithId(String message) {
         sleep();
         return getAutomatedBrowser().getTextFromElementWithId(message);
-
-
     }
 
     @Override
     public String getTextFromElementWithId(String id, int waitTime) {
         sleep();
         return getAutomatedBrowser().getTextFromElementWithId(id, waitTime);
-
-
     }
 
     @Override

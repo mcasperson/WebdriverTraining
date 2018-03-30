@@ -33,11 +33,13 @@ public class AutomatedBrowserFactory {
 
     private AutomatedBrowser getChromeBrowser() {
         return new ChromeDecorator(
-                new XvfbWindowSizeDecorator(1920, 1080,
-                        new ImplicitWaitDecorator(10,
-                                new BrowserMobDecorator(
-                                        new StepWaitDecorator(
-                                                new WebDriverDecorator()
+                new FailStateHandlerDecorator(
+                        new XvfbWindowSizeDecorator(1920, 1080,
+                                new ImplicitWaitDecorator(10,
+                                        new BrowserMobDecorator(
+                                                new StepWaitDecorator(
+                                                        new WebDriverDecorator()
+                                                )
                                         )
                                 )
                         )
@@ -47,7 +49,35 @@ public class AutomatedBrowserFactory {
 
     private AutomatedBrowser getFirefoxBrowser() {
         return new FirefoxDecorator(
-                new XvfbWindowSizeDecorator(1920, 1080,
+                new FailStateHandlerDecorator(
+                        new XvfbWindowSizeDecorator(1920, 1080,
+                                new ImplicitWaitDecorator(10,
+                                        new BrowserMobDecorator(
+                                                new StepWaitDecorator(
+                                                        new WebDriverDecorator()
+                                                )
+                                        )
+                                )
+                        )
+                )
+        );
+    }
+
+    private AutomatedBrowser getChromeHeadlessBrowser() {
+        return new ChromeHeadlessDecorator(
+                new FailStateHandlerDecorator(
+                        new ImplicitWaitDecorator(10,
+                                new BrowserMobDecorator(
+                                        new WebDriverDecorator()
+                                )
+                        )
+                )
+        );
+    }
+
+    private AutomatedBrowser getFirefoxHeadlessBrowser() {
+        return new FirefoxHeadlessDecorator(
+                new FailStateHandlerDecorator(
                         new ImplicitWaitDecorator(10,
                                 new BrowserMobDecorator(
                                         new StepWaitDecorator(
@@ -59,21 +89,11 @@ public class AutomatedBrowserFactory {
         );
     }
 
-    private AutomatedBrowser getChromeHeadlessBrowser() {
-        return new ChromeHeadlessDecorator(
-                new ImplicitWaitDecorator(10,
-                        new BrowserMobDecorator(
-                                new WebDriverDecorator()
-                        )
-                )
-        );
-    }
-
-    private AutomatedBrowser getFirefoxHeadlessBrowser() {
-        return new FirefoxHeadlessDecorator(
-                new ImplicitWaitDecorator(10,
-                        new BrowserMobDecorator(
-                                new StepWaitDecorator(
+    private AutomatedBrowser getBrowserStackBrowser() {
+        return new BrowserStackDecorator(
+                new FailStateHandlerDecorator(
+                        new ImplicitWaitDecorator(10,
+                                new BrowserStackEdgeDecorator(
                                         new WebDriverDecorator()
                                 )
                         )
@@ -81,22 +101,14 @@ public class AutomatedBrowserFactory {
         );
     }
 
-    private AutomatedBrowser getBrowserStackBrowser() {
-        return new BrowserStackDecorator(
-                new ImplicitWaitDecorator(10,
-                        new BrowserStackEdgeDecorator(
-                                new WebDriverDecorator()
-                        )
-                )
-        );
-    }
-
     private AutomatedBrowser getBrowserStackIPhone() {
         return new BrowserStackDecorator(
-                new ImplicitWaitDecorator(10,
-                        new BrowserStackIPhoneDecorator(
-                                new IgnoreWindowSizeErrorsDecorator(
-                                        new WebDriverDecorator()
+                new FailStateHandlerDecorator(
+                        new ImplicitWaitDecorator(10,
+                                new BrowserStackIPhoneDecorator(
+                                        new IgnoreWindowSizeErrorsDecorator(
+                                                new WebDriverDecorator()
+                                        )
                                 )
                         )
                 )
