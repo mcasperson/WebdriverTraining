@@ -20,7 +20,7 @@ public class EventsPage {
     }
 
     public void selectSydneyVenue() {
-        automatedBrowser.selectOptionByTextFromSelectWithId("venueSelector", "Sydney : Sydney Opera House", WAIT_TIME);
+        automatedBrowser.selectOptionByTextFromSelectWithId( "Sydney : Sydney Opera House", "venueSelector", WAIT_TIME);
     }
 
     public void orderTickets() {
