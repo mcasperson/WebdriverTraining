@@ -64,8 +64,8 @@ public class WebDriverDecorator extends AutomatedBrowserDecorator {
     }
 
     @Override
-    public void selectOptionByTextFromSelectWithId(String id, String optionText) {
-        new Select(webDriver.findElement(By.id(id))).selectByVisibleText(optionText);
+    public void selectOptionByTextFromSelectWithId(String optionText, String selectId) {
+        new Select(webDriver.findElement(By.id(selectId))).selectByVisibleText(optionText);
     }
 
     @Override
@@ -74,12 +74,12 @@ public class WebDriverDecorator extends AutomatedBrowserDecorator {
     }
 
     @Override
-    public void populateTextBoxWithId(String id, String text) {
+    public void populateElementWithId(String id, String text) {
         webDriver.findElement(By.id(id)).sendKeys(text);
     }
 
     @Override
-    public void populateTextBoxWithId(String id, String text, int waitTime) {
+    public void populateElementWithId(String id, String text, int waitTime) {
 
     }
 
@@ -104,7 +104,7 @@ public class WebDriverDecorator extends AutomatedBrowserDecorator {
     }
 
     @Override
-    public void selectOptionByTextFromSelectWithId(String id, String optionText, int waitTime) {
+    public void selectOptionByTextFromSelectWithId(String optionText, String id, int waitTime) {
         if (waitTime <= 0) {
             selectOptionByTextFromSelectWithId(id, optionText);
         } else {
@@ -114,12 +114,12 @@ public class WebDriverDecorator extends AutomatedBrowserDecorator {
     }
 
     @Override
-    public void selectOptionByTextFromSelectWithXPath(String xpath, String optionText) {
+    public void selectOptionByTextFromSelectWithXPath(String optionText, String xpath) {
         new Select(webDriver.findElement(By.xpath(xpath))).selectByVisibleText(optionText);
     }
 
     @Override
-    public void selectOptionByTextFromSelectWithXPath(String xpath, String optionText, int waitTime) {
+    public void selectOptionByTextFromSelectWithXPath(String optionText, String xpath, int waitTime) {
         if (waitTime <= 0) {
             selectOptionByTextFromSelectWithXPath(xpath, optionText);
         } else {
@@ -129,12 +129,12 @@ public class WebDriverDecorator extends AutomatedBrowserDecorator {
     }
 
     @Override
-    public void selectOptionByTextFromSelectWithCSS(String css, String optionText) {
+    public void selectOptionByTextFromSelectWithCSS(String optionText, String css) {
         new Select(webDriver.findElement(By.cssSelector(css))).selectByVisibleText(optionText);
     }
 
     @Override
-    public void selectOptionByTextFromSelectWithCSS(String css, String optionText, int waitTime) {
+    public void selectOptionByTextFromSelectWithCSS(String optionText, String css, int waitTime) {
         if (waitTime <= 0) {
             selectOptionByTextFromSelectWithCSS(css, optionText);
         } else {
@@ -169,14 +169,14 @@ public class WebDriverDecorator extends AutomatedBrowserDecorator {
     }
 
     @Override
-    public void populateTextBoxWithXPath(String xpath, String text) {
+    public void populateElementWithXPath(String xpath, String text) {
         webDriver.findElement(By.xpath(xpath)).sendKeys(text);
     }
 
     @Override
-    public void populateTextBoxWithXPath(String xpath, String text, int waitTime) {
+    public void populateElementWithXPath(String xpath, String text, int waitTime) {
         if (waitTime <= 0) {
-            populateTextBoxWithXPath(xpath, text);
+            populateElementWithXPath(xpath, text);
         } else {
             final WebDriverWait wait = new WebDriverWait(webDriver, waitTime);
             wait.until(ExpectedConditions.elementToBeClickable((By.xpath(xpath)))).sendKeys(text);

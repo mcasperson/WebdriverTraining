@@ -16,7 +16,7 @@ public class BookingPage {
     }
 
     public void addAdultTickets(Integer number) {
-        automatedBrowser.populateTextBoxWithXPath(
+        automatedBrowser.populateElementWithXPath(
                 "/html/body/div[2]/div[2]/div[2]/div[1]/div/div/form/div[1]/div/div/input",
                 number.toString(),
                 10);
@@ -27,7 +27,7 @@ public class BookingPage {
     }
 
     public void setEmail(String email) {
-        automatedBrowser.populateTextBoxWithId("email", email);
+        automatedBrowser.populateElementWithId("email", email);
     }
 
     public void checkout() {

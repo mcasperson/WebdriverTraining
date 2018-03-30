@@ -67,15 +67,15 @@ public class StepWaitDecorator extends AutomatedBrowserDecorator {
     }
 
     @Override
-    public void populateTextBoxWithId(String id, String text) {
+    public void populateElementWithId(String id, String text) {
         sleep();
-        getAutomatedBrowser().populateTextBoxWithId(id, text);
+        getAutomatedBrowser().populateElementWithId(id, text);
     }
 
     @Override
-    public void populateTextBoxWithId(String id, String text, int waitTime) {
+    public void populateElementWithId(String id, String text, int waitTime) {
         sleep();
-        getAutomatedBrowser().populateTextBoxWithId(id, text, waitTime);
+        getAutomatedBrowser().populateElementWithId(id, text, waitTime);
     }
 
     @Override
@@ -145,15 +145,15 @@ public class StepWaitDecorator extends AutomatedBrowserDecorator {
     }
 
     @Override
-    public void populateTextBoxWithXPath(String xpath, String text) {
+    public void populateElementWithXPath(String xpath, String text) {
         sleep();
-        getAutomatedBrowser().populateTextBoxWithXPath(xpath, text);
+        getAutomatedBrowser().populateElementWithXPath(xpath, text);
     }
 
     @Override
-    public void populateTextBoxWithXPath(String xpath, String text, int waitTime) {
+    public void populateElementWithXPath(String xpath, String text, int waitTime) {
         sleep();
-        getAutomatedBrowser().populateTextBoxWithXPath(xpath, text, waitTime);
+        getAutomatedBrowser().populateElementWithXPath(xpath, text, waitTime);
     }
 
     @Override

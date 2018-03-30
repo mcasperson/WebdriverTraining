@@ -34,25 +34,25 @@ public interface AutomatedBrowser {
 
     void clickLinkWithText(String text, int waitTime);
 
-    void selectOptionByTextFromSelectWithId(String id, String optionText);
+    void selectOptionByTextFromSelectWithId(String optionText, String id);
 
-    void selectOptionByTextFromSelectWithId(String id, String optionText, int waitTime);
+    void selectOptionByTextFromSelectWithId(String optionText, String id, int waitTime);
 
-    void selectOptionByTextFromSelectWithXPath(String xpath, String optionText);
+    void selectOptionByTextFromSelectWithXPath(String optionText, String xpath);
 
-    void selectOptionByTextFromSelectWithXPath(String xpath, String optionText, int waitTime);
+    void selectOptionByTextFromSelectWithXPath(String optionText, String xpath, int waitTime);
 
-    void selectOptionByTextFromSelectWithCSS(String css, String optionText);
+    void selectOptionByTextFromSelectWithCSS(String optionText, String css);
 
-    void selectOptionByTextFromSelectWithCSS(String css, String optionText, int waitTime);
+    void selectOptionByTextFromSelectWithCSS(String optionText, String css, int waitTime);
 
-    void populateTextBoxWithId(String id, String text);
+    void populateElementWithId(String id, String text);
 
-    void populateTextBoxWithId(String id, String text, int waitTime);
+    void populateElementWithId(String id, String text, int waitTime);
 
-    void populateTextBoxWithXPath(String xpath, String text);
+    void populateElementWithXPath(String xpath, String text);
 
-    void populateTextBoxWithXPath(String xpath, String text, int waitTime);
+    void populateElementWithXPath(String xpath, String text, int waitTime);
 
     void populateTextBoxWithCSS(String css, String text);
 

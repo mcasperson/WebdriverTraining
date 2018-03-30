@@ -45,10 +45,10 @@ public class FormTest {
             automatedBrowser.selectOptionByTextFromSelectWithId("testselect", "Option 2.1");
             assertEquals("Select Changed", getMessageText(automatedBrowser));
 
-            automatedBrowser.populateTextBoxWithId("testtext", "This is some test text");
+            automatedBrowser.populateElementWithId("testtext", "This is some test text");
             assertEquals("Text Input Changed", getMessageText(automatedBrowser));
 
-            automatedBrowser.populateTextBoxWithId("testtextarea", "This is some test text in a text area");
+            automatedBrowser.populateElementWithId("testtextarea", "This is some test text in a text area");
             assertEquals("Text Area Changed", getMessageText(automatedBrowser));
 
             automatedBrowser.clickElementWithId("testradio1");
@@ -87,10 +87,10 @@ public class FormTest {
             automatedBrowser.selectOptionByTextFromSelectWithXPath("//*[@id=\"testselect\"]", "Option 2.1");
             assertEquals("Select Changed", getMessageText(automatedBrowser));
 
-            automatedBrowser.populateTextBoxWithXPath("//*[@id=\"testtext\"]", "This is some test text");
+            automatedBrowser.populateElementWithXPath("//*[@id=\"testtext\"]", "This is some test text");
             assertEquals("Text Input Changed", getMessageText(automatedBrowser));
 
-            automatedBrowser.populateTextBoxWithXPath("//*[@id=\"testtextarea\"]", "This is some test text in a text area");
+            automatedBrowser.populateElementWithXPath("//*[@id=\"testtextarea\"]", "This is some test text in a text area");
             assertEquals("Text Area Changed", getMessageText(automatedBrowser));
 
             automatedBrowser.clickElementWithXPath("//*[@id=\"testradio1\"]");
