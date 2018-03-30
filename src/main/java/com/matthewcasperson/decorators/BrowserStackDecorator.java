@@ -1,7 +1,7 @@
 package com.matthewcasperson.decorators;
 
 import com.matthewcasperson.AutomatedBrowser;
-import com.matthewcasperson.AutomatedBrowserDecorator;
+import com.matthewcasperson.decoratorbase.AutomatedBrowserDecorator;
 import com.matthewcasperson.exceptions.ConfigurationException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;

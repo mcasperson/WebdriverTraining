@@ -58,9 +58,9 @@ public class AutomatedBrowserFactory {
     private AutomatedBrowser getChromeHeadlessBrowser() {
         return new ChromeHeadlessDecorator(
                 new ImplicitWaitDecorator(10,
-                        //new BrowserMobDecorator(
+                        new BrowserMobDecorator(
                                 new WebDriverDecorator()
-                        //)
+                        )
                 )
         );
     }

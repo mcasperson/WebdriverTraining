@@ -1,7 +1,7 @@
 package com.matthewcasperson.decorators;
 
 import com.matthewcasperson.AutomatedBrowser;
-import com.matthewcasperson.AutomatedBrowserDecorator;
+import com.matthewcasperson.decoratorbase.AutomatedBrowserDecorator;
 import org.openqa.selenium.WebDriverException;
 
 public class IgnoreWindowSizeErrorsDecorator extends AutomatedBrowserDecorator {

@@ -1,13 +1,12 @@
 package com.matthewcasperson;
 
 import com.matthewcasperson.pages.ticketmonster.TicketMonster;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.Test;
 
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 class FormTest {
     private static final int RETRY_COUNT = 3;
@@ -19,8 +18,7 @@ class FormTest {
         );
     }
 
-    @ParameterizedTest
-    @MethodSource("browserProvider")
+    @Test
     void testWithIDs(String browser) {
         final AutomatedBrowser automatedBrowser = new AutomatedBrowserFactory().getAutomatedBrowser(browser);
         try {
@@ -62,8 +60,7 @@ class FormTest {
         }
     }
 
-    @ParameterizedTest
-    @MethodSource("browserProvider")
+    @Test
     void testWithXPaths(String browser) {
         final AutomatedBrowser automatedBrowser = new AutomatedBrowserFactory().getAutomatedBrowser(browser);
         try {
@@ -105,8 +102,7 @@ class FormTest {
         }
     }
 
-    @ParameterizedTest
-    @MethodSource("browserProvider")
+    @Test
     void testWithCSS(String browser) {
         final AutomatedBrowser automatedBrowser = new AutomatedBrowserFactory().getAutomatedBrowser(browser);
         try {
@@ -152,8 +148,7 @@ class FormTest {
         return automatedBrowser.getTextFromElementWithId("message");
     }
 
-    @ParameterizedTest
-    @MethodSource("browserProvider")
+    @Test
     void ticketMonster(String browser) {
         final AutomatedBrowser automatedBrowser = new AutomatedBrowserFactory().getAutomatedBrowser(browser);
         try {
@@ -182,8 +177,7 @@ class FormTest {
                     break;
                 } catch (Exception ex) {
                     // ignored
-                }
-                finally {
+                } finally {
                     automatedBrowser.saveHarFile("test.har");
                 }
             }

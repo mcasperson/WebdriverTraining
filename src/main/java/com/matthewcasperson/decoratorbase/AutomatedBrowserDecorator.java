@@ -1,16 +1,20 @@
-package com.matthewcasperson;
+package com.matthewcasperson.decoratorbase;
 
+import com.matthewcasperson.AutomatedBrowser;
+import com.matthewcasperson.AutomatedBrowserFactory;
+import cucumber.api.java.en.And;
+import cucumber.api.java.en.Given;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class AutomatedBrowserDecorator implements AutomatedBrowser {
     protected AutomatedBrowser automatedBrowser;
 
-    protected AutomatedBrowserDecorator() {
+    public AutomatedBrowserDecorator() {
 
     }
 
-    protected AutomatedBrowserDecorator(AutomatedBrowser automatedBrowser) {
+    public AutomatedBrowserDecorator(AutomatedBrowser automatedBrowser) {
         this.automatedBrowser = automatedBrowser;
     }
 
@@ -42,6 +46,21 @@ public class AutomatedBrowserDecorator implements AutomatedBrowser {
         return automatedBrowser.getDesiredCapabilities();
     }
 
+    @Given("I open the browser \"(.*?)\"")
+    public void openBrowser(String browser) {
+        automatedBrowser = new AutomatedBrowserFactory().getAutomatedBrowser(browser);
+        automatedBrowser.init();
+    }
+
+    @Given("I close the browser")
+    public void closeBrowser() {
+        if (automatedBrowser != null) {
+            automatedBrowser.destroy();
+            automatedBrowser = null;
+        }
+    }
+
+    @And("I open the url \"(.*?)\"")
     @Override
     public void goTo(String url) {
         if (automatedBrowser != null) {

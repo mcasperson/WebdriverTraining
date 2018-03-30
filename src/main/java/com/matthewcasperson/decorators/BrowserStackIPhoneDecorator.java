@@ -1,7 +1,7 @@
 package com.matthewcasperson.decorators;
 
 import com.matthewcasperson.AutomatedBrowser;
-import com.matthewcasperson.AutomatedBrowserDecorator;
+import com.matthewcasperson.decoratorbase.AutomatedBrowserDecorator;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class BrowserStackIPhoneDecorator extends AutomatedBrowserDecorator {

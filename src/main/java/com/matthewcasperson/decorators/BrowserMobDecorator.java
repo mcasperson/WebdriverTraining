@@ -1,21 +1,18 @@
 package com.matthewcasperson.decorators;
 
 import com.matthewcasperson.AutomatedBrowser;
-import com.matthewcasperson.AutomatedBrowserDecorator;
+import com.matthewcasperson.decoratorbase.AutomatedBrowserDecorator;
 import com.matthewcasperson.exceptions.SaveException;
 import io.netty.handler.codec.http.DefaultHttpResponse;
 import io.netty.handler.codec.http.HttpResponseStatus;
 import net.lightbody.bmp.BrowserMobProxy;
 import net.lightbody.bmp.BrowserMobProxyServer;
-import net.lightbody.bmp.client.ClientUtil;
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
 import java.util.regex.Pattern;
 
 public class BrowserMobDecorator extends AutomatedBrowserDecorator {
