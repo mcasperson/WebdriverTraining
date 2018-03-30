@@ -180,7 +180,10 @@ class FormTest {
                     final String confirmation = ticketMonster.getBookings().getConfirmationHeader();
                     assertTrue(confirmation.contains("confirmed"));
                     break;
-                } finally {
+                } catch (Exception ex) {
+                    // ignored
+                }
+                finally {
                     automatedBrowser.saveHarFile("test.har");
                 }
             }
