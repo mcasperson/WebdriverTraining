@@ -10,6 +10,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class FormTest {
+    private static final int RETRY_COUNT = 3;
+
     private static Stream<String> browserProvider() {
         return Stream.of(
                 //"ChromeHeadless",
@@ -158,24 +160,30 @@ class FormTest {
             automatedBrowser.init();
             automatedBrowser.maximizeWindow();
             automatedBrowser.alterRequestTo(".*?/rest/media/1", 404);
-            automatedBrowser.captureHarFile();
 
-            final TicketMonster ticketMonster = new TicketMonster(automatedBrowser);
-            ticketMonster.getWelcomePage().open();
-            ticketMonster.getWelcomePage().buyTickets();
-            ticketMonster.getEvents().selectConcert();
-            ticketMonster.getEvents().selectRockConcert();
-            ticketMonster.getEvents().selectSydneyVenue();
-            ticketMonster.getEvents().orderTickets();
-            ticketMonster.getBookings().selectFrontLeft();
-            ticketMonster.getBookings().addAdultTickets(2);
-            ticketMonster.getBookings().addTickets();
-            ticketMonster.getBookings().setEmail("a@a.com");
-            ticketMonster.getBookings().checkout();
-            final String confirmation = ticketMonster.getBookings().getConfirmationHeader();
-            assertTrue(confirmation.contains("confirmed"));
+            for (int i = 0; i < RETRY_COUNT; ++i) {
+                try {
+                    automatedBrowser.captureHarFile();
 
-            automatedBrowser.saveHarFile("test.har");
+                    final TicketMonster ticketMonster = new TicketMonster(automatedBrowser);
+                    ticketMonster.getWelcomePage().open();
+                    ticketMonster.getWelcomePage().buyTickets();
+                    ticketMonster.getEvents().selectConcert();
+                    ticketMonster.getEvents().selectRockConcert();
+                    ticketMonster.getEvents().selectSydneyVenue();
+                    ticketMonster.getEvents().orderTickets();
+                    ticketMonster.getBookings().selectFrontLeft();
+                    ticketMonster.getBookings().addAdultTickets(2);
+                    ticketMonster.getBookings().addTickets();
+                    ticketMonster.getBookings().setEmail("a@a.com");
+                    ticketMonster.getBookings().checkout();
+                    final String confirmation = ticketMonster.getBookings().getConfirmationHeader();
+                    assertTrue(confirmation.contains("confirmed"));
+                    break;
+                } finally {
+                    automatedBrowser.saveHarFile("test.har");
+                }
+            }
         } finally {
             automatedBrowser.destroy();
         }
