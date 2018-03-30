@@ -22,11 +22,9 @@ public class FormTest {
 
     @Parameterized.Parameters
     public static Iterable data() {
-        return Arrays.asList (
-                new Object[] {
-                        "ChromeHeadless",
-                        "FirefoxHeadless"
-                }
+        return Arrays.asList(
+                "ChromeHeadless",
+                "FirefoxHeadless"
         );
     }
 

@@ -17,7 +17,7 @@ public class FirefoxHeadlessDecorator extends AutomatedBrowserDecorator {
         options.addArguments("-headless");
         options.merge(getDesiredCapabilities());
         final WebDriver webDriver = new FirefoxDriver(options);
-        automatedBrowser.setWebDriver(webDriver);
-        automatedBrowser.init();
+        getAutomatedBrowser().setWebDriver(webDriver);
+        getAutomatedBrowser().init();
     }
 }

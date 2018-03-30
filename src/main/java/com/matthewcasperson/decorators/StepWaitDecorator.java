@@ -22,20 +22,20 @@ public class StepWaitDecorator extends AutomatedBrowserDecorator {
     @Override
     public void clickElementWithId(String testbutton) {
         sleep();
-        automatedBrowser.clickElementWithId(testbutton);
+        getAutomatedBrowser().clickElementWithId(testbutton);
 
     }
 
     @Override
     public void clickElementWithId(String id, int waitTime) {
         sleep();
-        automatedBrowser.clickElementWithId(id, waitTime);
+        getAutomatedBrowser().clickElementWithId(id, waitTime);
     }
 
     @Override
     public String getTextFromElementWithId(String message) {
         sleep();
-        return automatedBrowser.getTextFromElementWithId(message);
+        return getAutomatedBrowser().getTextFromElementWithId(message);
 
 
     }
@@ -43,7 +43,7 @@ public class StepWaitDecorator extends AutomatedBrowserDecorator {
     @Override
     public String getTextFromElementWithId(String id, int waitTime) {
         sleep();
-        return automatedBrowser.getTextFromElementWithId(id, waitTime);
+        return getAutomatedBrowser().getTextFromElementWithId(id, waitTime);
 
 
     }
@@ -51,162 +51,162 @@ public class StepWaitDecorator extends AutomatedBrowserDecorator {
     @Override
     public void destroy() {
         sleep();
-        automatedBrowser.destroy();
+        getAutomatedBrowser().destroy();
     }
 
     @Override
     public void selectOptionByTextFromSelectWithId(String selectId, String optionText) {
         sleep();
-        automatedBrowser.selectOptionByTextFromSelectWithId(selectId, optionText);
+        getAutomatedBrowser().selectOptionByTextFromSelectWithId(selectId, optionText);
     }
 
     @Override
     public void maximizeWindow() {
         sleep();
-        automatedBrowser.maximizeWindow();
+        getAutomatedBrowser().maximizeWindow();
     }
 
     @Override
     public void populateTextBoxWithId(String id, String text) {
         sleep();
-        automatedBrowser.populateTextBoxWithId(id, text);
+        getAutomatedBrowser().populateTextBoxWithId(id, text);
     }
 
     @Override
     public void populateTextBoxWithId(String id, String text, int waitTime) {
         sleep();
-        automatedBrowser.populateTextBoxWithId(id, text, waitTime);
+        getAutomatedBrowser().populateTextBoxWithId(id, text, waitTime);
     }
 
     @Override
     public void clickLinkWithText(String text) {
         sleep();
-        automatedBrowser.clickLinkWithText(text);
+        getAutomatedBrowser().clickLinkWithText(text);
     }
 
     @Override
     public void clickLinkWithText(String text, int wait) {
         sleep();
-        automatedBrowser.clickLinkWithText(text, wait);
+        getAutomatedBrowser().clickLinkWithText(text, wait);
     }
 
     @Override
     public void clickElementWithXPath(String xpath) {
         sleep();
-        automatedBrowser.clickElementWithXPath(xpath);
+        getAutomatedBrowser().clickElementWithXPath(xpath);
     }
 
     @Override
     public void selectOptionByTextFromSelectWithId(String id, String optionText, int waitTime) {
         sleep();
-        automatedBrowser.selectOptionByTextFromSelectWithId(id, optionText, waitTime);
+        getAutomatedBrowser().selectOptionByTextFromSelectWithId(id, optionText, waitTime);
     }
 
     @Override
     public void selectOptionByTextFromSelectWithXPath(String xpath, String optionText) {
         sleep();
-        automatedBrowser.selectOptionByTextFromSelectWithXPath(xpath, optionText);
+        getAutomatedBrowser().selectOptionByTextFromSelectWithXPath(xpath, optionText);
     }
 
     @Override
     public void selectOptionByTextFromSelectWithXPath(String xpath, String optionText, int waitTime) {
         sleep();
-        automatedBrowser.selectOptionByTextFromSelectWithXPath(xpath, optionText, waitTime);
+        getAutomatedBrowser().selectOptionByTextFromSelectWithXPath(xpath, optionText, waitTime);
     }
 
     @Override
     public void selectOptionByTextFromSelectWithCSS(String css, String optionText) {
         sleep();
-        automatedBrowser.selectOptionByTextFromSelectWithCSS(css, optionText);
+        getAutomatedBrowser().selectOptionByTextFromSelectWithCSS(css, optionText);
     }
 
     @Override
     public void selectOptionByTextFromSelectWithCSS(String css, String optionText, int waitTime) {
         sleep();
-        automatedBrowser.selectOptionByTextFromSelectWithCSS(css, optionText, waitTime);
+        getAutomatedBrowser().selectOptionByTextFromSelectWithCSS(css, optionText, waitTime);
     }
 
     @Override
     public void clickElementWithXPath(String xpath, int waitTime) {
         sleep();
-        automatedBrowser.clickElementWithXPath(xpath, waitTime);
+        getAutomatedBrowser().clickElementWithXPath(xpath, waitTime);
     }
 
     @Override
     public void clickElementWithCSS(String css) {
         sleep();
-        automatedBrowser.clickElementWithCSS(css);
+        getAutomatedBrowser().clickElementWithCSS(css);
     }
 
     @Override
     public void clickElementWithCSS(String css, int waitTime) {
         sleep();
-        automatedBrowser.clickElementWithCSS(css, waitTime);
+        getAutomatedBrowser().clickElementWithCSS(css, waitTime);
     }
 
     @Override
     public void populateTextBoxWithXPath(String xpath, String text) {
         sleep();
-        automatedBrowser.populateTextBoxWithXPath(xpath, text);
+        getAutomatedBrowser().populateTextBoxWithXPath(xpath, text);
     }
 
     @Override
     public void populateTextBoxWithXPath(String xpath, String text, int waitTime) {
         sleep();
-        automatedBrowser.populateTextBoxWithXPath(xpath, text, waitTime);
+        getAutomatedBrowser().populateTextBoxWithXPath(xpath, text, waitTime);
     }
 
     @Override
     public void populateTextBoxWithCSS(String css, String text) {
         sleep();
-        automatedBrowser.populateTextBoxWithCSS(css, text);
+        getAutomatedBrowser().populateTextBoxWithCSS(css, text);
     }
 
     @Override
     public void populateTextBoxWithCSS(String css, String text, int waitTime) {
         sleep();
-        automatedBrowser.populateTextBoxWithCSS(css, text, waitTime);
+        getAutomatedBrowser().populateTextBoxWithCSS(css, text, waitTime);
     }
 
     @Override
     public String getTextFromElementWithXPath(String xpath) {
         sleep();
-        return automatedBrowser.getTextFromElementWithXPath(xpath);
+        return getAutomatedBrowser().getTextFromElementWithXPath(xpath);
     }
 
     @Override
     public String getTextFromElementWithXPath(String xpath, int waitTime) {
         sleep();
-        return automatedBrowser.getTextFromElementWithXPath(xpath, waitTime);
+        return getAutomatedBrowser().getTextFromElementWithXPath(xpath, waitTime);
     }
 
     @Override
     public String getTextFromElementWithCSS(String css) {
         sleep();
-        return automatedBrowser.getTextFromElementWithCSS(css);
+        return getAutomatedBrowser().getTextFromElementWithCSS(css);
     }
 
     @Override
     public String getTextFromElementWithCSS(String css, int waitTime) {
         sleep();
-        return automatedBrowser.getTextFromElementWithCSS(css, waitTime);
+        return getAutomatedBrowser().getTextFromElementWithCSS(css, waitTime);
     }
 
     @Override
     public void alterRequestTo(String url, int responseCode) {
         sleep();
-        automatedBrowser.alterRequestTo(url, responseCode);
+        getAutomatedBrowser().alterRequestTo(url, responseCode);
     }
 
     @Override
     public void captureHarFile() {
         sleep();
-        automatedBrowser.captureHarFile();
+        getAutomatedBrowser().captureHarFile();
     }
 
     @Override
     public void saveHarFile(String file) {
         sleep();
-        automatedBrowser.saveHarFile(file);
+        getAutomatedBrowser().saveHarFile(file);
     }
 }

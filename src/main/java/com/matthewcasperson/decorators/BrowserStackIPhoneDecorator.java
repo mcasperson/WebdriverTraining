@@ -11,7 +11,7 @@ public class BrowserStackIPhoneDecorator extends AutomatedBrowserDecorator {
 
     @Override
     public DesiredCapabilities getDesiredCapabilities() {
-        final DesiredCapabilities desiredCapabilities = automatedBrowser.getDesiredCapabilities();
+        final DesiredCapabilities desiredCapabilities = getAutomatedBrowser().getDesiredCapabilities();
         desiredCapabilities.setCapability("browserName", "iPhone");
         desiredCapabilities.setCapability("device", "iPhone 7");
         desiredCapabilities.setCapability("realMobile", "true");

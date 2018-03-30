@@ -20,7 +20,7 @@ public class ChromeHeadlessDecorator extends AutomatedBrowserDecorator {
         options.addArguments("no-sandbox");
         options.merge(getDesiredCapabilities());
         final WebDriver webDriver = new ChromeDriver(options);
-        automatedBrowser.setWebDriver(webDriver);
-        automatedBrowser.init();
+        getAutomatedBrowser().setWebDriver(webDriver);
+        getAutomatedBrowser().init();
     }
 }

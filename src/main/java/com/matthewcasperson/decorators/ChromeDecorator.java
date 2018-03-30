@@ -17,7 +17,7 @@ public class ChromeDecorator extends AutomatedBrowserDecorator {
         options.addArguments("allow-running-insecure-content");
         options.merge(getDesiredCapabilities());
         final WebDriver webDriver = new ChromeDriver(options);
-        automatedBrowser.setWebDriver(webDriver);
-        automatedBrowser.init();
+        getAutomatedBrowser().setWebDriver(webDriver);
+        getAutomatedBrowser().init();
     }
 }

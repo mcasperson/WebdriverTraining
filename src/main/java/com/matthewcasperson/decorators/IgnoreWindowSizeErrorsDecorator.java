@@ -12,7 +12,7 @@ public class IgnoreWindowSizeErrorsDecorator extends AutomatedBrowserDecorator {
     @Override
     public void maximizeWindow() {
         try {
-            automatedBrowser.maximizeWindow();
+            getAutomatedBrowser().maximizeWindow();
         } catch (final WebDriverException ex) {
             // ignored
         }

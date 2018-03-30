@@ -28,7 +28,7 @@ public class BrowserMobDecorator extends AutomatedBrowserDecorator {
         proxy = new BrowserMobProxyServer();
         proxy.start(0);
 
-        final DesiredCapabilities desiredCapabilities = automatedBrowser.getDesiredCapabilities();
+        final DesiredCapabilities desiredCapabilities = getAutomatedBrowser().getDesiredCapabilities();
 
         final Proxy seleniumProxy = new Proxy();
         final String proxyStr = "localhost:" + proxy.getPort();
@@ -43,7 +43,7 @@ public class BrowserMobDecorator extends AutomatedBrowserDecorator {
 
     @Override
     public void destroy() {
-        automatedBrowser.destroy();
+        getAutomatedBrowser().destroy();
         if (proxy != null) {
             proxy.stop();
         }
@@ -59,7 +59,7 @@ public class BrowserMobDecorator extends AutomatedBrowserDecorator {
             return null;
         });
 
-        automatedBrowser.alterRequestTo(url, responseCode);
+        getAutomatedBrowser().alterRequestTo(url, responseCode);
     }
 
     @Override

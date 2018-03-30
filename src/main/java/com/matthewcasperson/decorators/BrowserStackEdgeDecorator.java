@@ -11,7 +11,7 @@ public class BrowserStackEdgeDecorator extends AutomatedBrowserDecorator {
 
     @Override
     public DesiredCapabilities getDesiredCapabilities() {
-        final DesiredCapabilities desiredCapabilities = automatedBrowser.getDesiredCapabilities();
+        final DesiredCapabilities desiredCapabilities = getAutomatedBrowser().getDesiredCapabilities();
         desiredCapabilities.setCapability("browser", "Edge");
         desiredCapabilities.setCapability("browser_version", "insider preview");
         desiredCapabilities.setCapability("os", "Windows");

@@ -16,7 +16,7 @@ public class FirefoxDecorator extends AutomatedBrowserDecorator {
         final FirefoxOptions options = new FirefoxOptions();
         options.merge(getDesiredCapabilities());
         final WebDriver webDriver = new FirefoxDriver(options);
-        automatedBrowser.setWebDriver(webDriver);
-        automatedBrowser.init();
+        getAutomatedBrowser().setWebDriver(webDriver);
+        getAutomatedBrowser().init();
     }
 }
