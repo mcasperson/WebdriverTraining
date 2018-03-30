@@ -40,7 +40,7 @@ public class FormTest {
             automatedBrowser.clickElementWithId("testbutton");
             assertEquals("Button Clicked", getMessageText(automatedBrowser));
 
-            automatedBrowser.selectOptionByTextFromSelectWithId("testselect", "Option 2.1");
+            automatedBrowser.selectOptionByTextFromSelectWithId("Option 2.1", "testselect");
             assertEquals("Select Changed", getMessageText(automatedBrowser));
 
             automatedBrowser.populateElementWithId("testtext", "This is some test text");
@@ -82,7 +82,7 @@ public class FormTest {
             automatedBrowser.clickElementWithXPath("//*[@id=\"testbutton\"]");
             assertEquals("Button Clicked", getMessageText(automatedBrowser));
 
-            automatedBrowser.selectOptionByTextFromSelectWithXPath("//*[@id=\"testselect\"]", "Option 2.1");
+            automatedBrowser.selectOptionByTextFromSelectWithXPath( "Option 2.1", "//*[@id=\"testselect\"]");
             assertEquals("Select Changed", getMessageText(automatedBrowser));
 
             automatedBrowser.populateElementWithXPath("//*[@id=\"testtext\"]", "This is some test text");
@@ -124,7 +124,7 @@ public class FormTest {
             automatedBrowser.clickElementWithCSS("#testbutton");
             assertEquals("Button Clicked", getMessageText(automatedBrowser));
 
-            automatedBrowser.selectOptionByTextFromSelectWithCSS("#testselect", "Option 2.1");
+            automatedBrowser.selectOptionByTextFromSelectWithCSS( "Option 2.1", "#testselect");
             assertEquals("Select Changed", getMessageText(automatedBrowser));
 
             automatedBrowser.populateTextBoxWithCSS("#testtext", "This is some test text");
