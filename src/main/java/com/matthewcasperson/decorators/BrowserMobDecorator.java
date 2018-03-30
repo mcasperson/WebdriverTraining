@@ -38,9 +38,6 @@ public class BrowserMobDecorator extends AutomatedBrowserDecorator {
 
         seleniumProxy.setHttpProxy(proxyStr);
         seleniumProxy.setSslProxy(proxyStr);
-        seleniumProxy.setFtpProxy(proxyStr);
-        seleniumProxy.setSocksProxy(proxyStr);
-        seleniumProxy.setSocksVersion(5);
 
         desiredCapabilities.setCapability(CapabilityType.PROXY, seleniumProxy);
 
