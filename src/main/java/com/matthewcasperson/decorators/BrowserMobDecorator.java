@@ -33,11 +33,12 @@ public class BrowserMobDecorator extends AutomatedBrowserDecorator {
 
         final DesiredCapabilities desiredCapabilities = automatedBrowser.getDesiredCapabilities();
 
-        final Proxy seleniumProxy = ClientUtil.createSeleniumProxy(proxy);
+        final Proxy seleniumProxy = new Proxy();
+        final String proxyStr = "localhost:" + proxy.getPort();
 
-        final InetAddress connectableAddress = ClientUtil.getConnectableAddress();
-        final InetSocketAddress connectableAddressAndPort = new InetSocketAddress(connectableAddress, proxy.getPort());
-        final String proxyStr = String.format("%s:%d", connectableAddressAndPort.getHostString(), connectableAddressAndPort.getPort());
+        seleniumProxy.setHttpProxy(proxyStr);
+        seleniumProxy.setSslProxy(proxyStr);
+        seleniumProxy.setFtpProxy(proxyStr);
         seleniumProxy.setSocksProxy(proxyStr);
         seleniumProxy.setSocksVersion(5);
 
