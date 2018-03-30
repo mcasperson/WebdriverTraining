@@ -14,7 +14,7 @@ class FormTest {
 
     private static Stream<String> browserProvider() {
         return Stream.of(
-                //"ChromeHeadless",
+                "ChromeHeadless",
                 "FirefoxHeadless"
         );
     }
