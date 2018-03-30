@@ -2,24 +2,36 @@ package com.matthewcasperson;
 
 import com.matthewcasperson.pages.ticketmonster.TicketMonster;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
-import java.util.stream.Stream;
+import java.util.Arrays;
 
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 
-class FormTest {
+@RunWith(Parameterized.class)
+public class FormTest {
     private static final int RETRY_COUNT = 3;
 
-    private static Stream<String> browserProvider() {
-        return Stream.of(
-                "ChromeHeadless",
-                "FirefoxHeadless"
+    private String browser;
+
+    public FormTest(String browser) {
+        this.browser = browser;
+    }
+
+    @Parameterized.Parameters
+    public static Iterable data() {
+        return Arrays.asList (
+                new Object[] {
+                        "ChromeHeadless",
+                        "FirefoxHeadless"
+                }
         );
     }
 
     @Test
-    void testWithIDs(String browser) {
+    public void testWithIDs() {
         final AutomatedBrowser automatedBrowser = new AutomatedBrowserFactory().getAutomatedBrowser(browser);
         try {
             automatedBrowser.init();
@@ -61,7 +73,7 @@ class FormTest {
     }
 
     @Test
-    void testWithXPaths(String browser) {
+    public void testWithXPaths() {
         final AutomatedBrowser automatedBrowser = new AutomatedBrowserFactory().getAutomatedBrowser(browser);
         try {
             automatedBrowser.init();
@@ -103,7 +115,7 @@ class FormTest {
     }
 
     @Test
-    void testWithCSS(String browser) {
+    public void testWithCSS() {
         final AutomatedBrowser automatedBrowser = new AutomatedBrowserFactory().getAutomatedBrowser(browser);
         try {
             automatedBrowser.init();
@@ -149,7 +161,7 @@ class FormTest {
     }
 
     @Test
-    void ticketMonster(String browser) {
+    public void ticketMonster() {
         final AutomatedBrowser automatedBrowser = new AutomatedBrowserFactory().getAutomatedBrowser(browser);
         try {
             automatedBrowser.init();
