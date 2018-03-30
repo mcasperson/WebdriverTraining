@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class FormTest {
     private static Stream<String> browserProvider() {
         return Stream.of(
-                "FirefoxHeadless"
+                "ChromeHeadless"
         );
     }
 
