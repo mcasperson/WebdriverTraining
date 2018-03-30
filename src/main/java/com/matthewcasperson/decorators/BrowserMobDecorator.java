@@ -14,6 +14,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
 import java.util.regex.Pattern;
 
 public class BrowserMobDecorator extends AutomatedBrowserDecorator {
@@ -32,6 +34,12 @@ public class BrowserMobDecorator extends AutomatedBrowserDecorator {
         final DesiredCapabilities desiredCapabilities = automatedBrowser.getDesiredCapabilities();
 
         final Proxy seleniumProxy = ClientUtil.createSeleniumProxy(proxy);
+
+        final InetAddress connectableAddress = ClientUtil.getConnectableAddress();
+        final InetSocketAddress connectableAddressAndPort = new InetSocketAddress(connectableAddress, proxy.getPort());
+        final String proxyStr = String.format("%s:%d", connectableAddressAndPort.getHostString(), connectableAddressAndPort.getPort());
+        seleniumProxy.setSocksProxy(proxyStr);
+
         desiredCapabilities.setCapability(CapabilityType.PROXY, seleniumProxy);
 
         return desiredCapabilities;
