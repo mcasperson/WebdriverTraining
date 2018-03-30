@@ -1,6 +1,6 @@
 Feature: Buy Tickets on TicketMonster
   Scenario: Open browser
-    Given I open the browser "Chrome"
+    Given I open the browser "ChromeHeadless"
     And I maximize the window
     And I alter requests to urls matching the regex ".*?/rest/media/1" by returning the http code "404"
     And I open the url "https://ticket-monster.herokuapp.com/"
