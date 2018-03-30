@@ -14,3 +14,6 @@ before_install:
 - wget https://chromedriver.storage.googleapis.com/2.37/chromedriver_linux64.zip
 - unzip chromedriver_linux64.zip
 - sudo cp chromedriver /usr/bin
+- wget https://github.com/mozilla/geckodriver/releases/download/v0.20.0/geckodriver-v0.20.0-linux64.tar.gz
+- tar -xzf geckodriver-v0.20.0-linux64.tar.gz
+- sudo cp geckodriver /usr/bin
