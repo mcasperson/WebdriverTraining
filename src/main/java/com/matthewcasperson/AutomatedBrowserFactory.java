@@ -57,9 +57,11 @@ public class AutomatedBrowserFactory {
 
     private AutomatedBrowser getChromeHeadlessBrowser() {
         return new ChromeHeadlessDecorator(
-                new ImplicitWaitDecorator(10,
-                        new BrowserMobDecorator(
-                                new WebDriverDecorator()
+                new IgnoreWindowSizeErrorsDecorator(
+                        new ImplicitWaitDecorator(10,
+                                new BrowserMobDecorator(
+                                        new WebDriverDecorator()
+                                )
                         )
                 )
         );
@@ -67,10 +69,12 @@ public class AutomatedBrowserFactory {
 
     private AutomatedBrowser getFirefoxHeadlessBrowser() {
         return new FirefoxHeadlessDecorator(
-                new ImplicitWaitDecorator(10,
-                        new BrowserMobDecorator(
-                                new StepWaitDecorator(
-                                        new WebDriverDecorator()
+                new IgnoreWindowSizeErrorsDecorator(
+                        new ImplicitWaitDecorator(10,
+                                new BrowserMobDecorator(
+                                        new StepWaitDecorator(
+                                                new WebDriverDecorator()
+                                        )
                                 )
                         )
                 )
