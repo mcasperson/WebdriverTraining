@@ -33,10 +33,12 @@ public class AutomatedBrowserFactory {
 
     private AutomatedBrowser getChromeBrowser() {
         return new ChromeDecorator(
-                new ImplicitWaitDecorator(10,
-                        new BrowserMobDecorator(
-                                new StepWaitDecorator(
-                                        new WebDriverDecorator()
+                new XvfbWindowSizeDecorator(1920, 1080,
+                        new ImplicitWaitDecorator(10,
+                                new BrowserMobDecorator(
+                                        new StepWaitDecorator(
+                                                new WebDriverDecorator()
+                                        )
                                 )
                         )
                 )
@@ -45,10 +47,12 @@ public class AutomatedBrowserFactory {
 
     private AutomatedBrowser getFirefoxBrowser() {
         return new FirefoxDecorator(
-                new ImplicitWaitDecorator(10,
-                        new BrowserMobDecorator(
-                                new StepWaitDecorator(
-                                        new WebDriverDecorator()
+                new XvfbWindowSizeDecorator(1920, 1080,
+                        new ImplicitWaitDecorator(10,
+                                new BrowserMobDecorator(
+                                        new StepWaitDecorator(
+                                                new WebDriverDecorator()
+                                        )
                                 )
                         )
                 )
