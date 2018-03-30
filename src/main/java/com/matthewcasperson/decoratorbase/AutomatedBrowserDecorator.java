@@ -354,6 +354,8 @@ public class AutomatedBrowserDecorator implements AutomatedBrowser {
 
     @After
     public void afterScenario(Scenario scenario) {
-        getAutomatedBrowser().setBrowserFailedState(scenario.isFailed());
+        if (getAutomatedBrowser() != null) {
+            getAutomatedBrowser().setBrowserFailedState(scenario.isFailed());
+        }
     }
 }
