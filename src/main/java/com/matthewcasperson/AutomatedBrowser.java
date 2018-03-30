@@ -71,4 +71,8 @@ public interface AutomatedBrowser {
     String getTextFromElementWithCSS(String css, int waitTime);
 
     void alterRequestTo(String url, int responseCode);
+
+    void captureHarFile();
+
+    void saveHarFile(String file);
 }

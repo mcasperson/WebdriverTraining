@@ -3,31 +3,38 @@ package com.matthewcasperson;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 public class AutomatedBrowserDecorator implements AutomatedBrowser {
     protected AutomatedBrowser automatedBrowser;
 
-    public AutomatedBrowserDecorator(AutomatedBrowser automatedBrowser) {
-        checkNotNull(automatedBrowser);
+    protected AutomatedBrowserDecorator() {
 
+    }
+
+    protected AutomatedBrowserDecorator(AutomatedBrowser automatedBrowser) {
         this.automatedBrowser = automatedBrowser;
     }
 
     @Override
     public WebDriver getWebDriver() {
-        return automatedBrowser.getWebDriver();
+        if (automatedBrowser != null) {
+            return automatedBrowser.getWebDriver();
+        }
+
+        return null;
     }
 
     @Override
     public void setWebDriver(WebDriver webDriver) {
-
-        automatedBrowser.setWebDriver(webDriver);
+        if (automatedBrowser != null) {
+            automatedBrowser.setWebDriver(webDriver);
+        }
     }
 
     @Override
     public void init() {
-        automatedBrowser.init();
+        if (automatedBrowser != null) {
+            automatedBrowser.init();
+        }
     }
 
     @Override
@@ -37,152 +44,238 @@ public class AutomatedBrowserDecorator implements AutomatedBrowser {
 
     @Override
     public void goTo(String url) {
-        automatedBrowser.goTo(url);
+        if (automatedBrowser != null) {
+            automatedBrowser.goTo(url);
+        }
     }
 
     @Override
     public void clickElementWithId(String testbutton) {
-        automatedBrowser.clickElementWithId(testbutton);
+        if (automatedBrowser != null) {
+            automatedBrowser.clickElementWithId(testbutton);
+        }
 
     }
 
     @Override
     public void clickElementWithId(String id, int waitTime) {
-        automatedBrowser.clickElementWithId(id, waitTime);
+        if (automatedBrowser != null) {
+            automatedBrowser.clickElementWithId(id, waitTime);
+        }
     }
 
     @Override
     public String getTextFromElementWithId(String message) {
-        return automatedBrowser.getTextFromElementWithId(message);
+        if (automatedBrowser != null) {
+            return automatedBrowser.getTextFromElementWithId(message);
+        }
+
+        return null;
     }
 
     @Override
     public String getTextFromElementWithId(String id, int waitTime) {
-        return automatedBrowser.getTextFromElementWithId(id, waitTime);
+        if (automatedBrowser != null) {
+            return automatedBrowser.getTextFromElementWithId(id, waitTime);
+        }
+
+        return null;
     }
 
     @Override
     public void destroy() {
-        automatedBrowser.destroy();
+        if (automatedBrowser != null) {
+            automatedBrowser.destroy();
+        }
     }
 
     @Override
     public void selectOptionByTextFromSelectWithId(String selectId, String optionText) {
-        automatedBrowser.selectOptionByTextFromSelectWithId(selectId, optionText);
+        if (automatedBrowser != null) {
+            automatedBrowser.selectOptionByTextFromSelectWithId(selectId, optionText);
+        }
     }
 
     @Override
     public void maximizeWindow() {
-        automatedBrowser.maximizeWindow();
+        if (automatedBrowser != null) {
+            automatedBrowser.maximizeWindow();
+        }
     }
 
     @Override
     public void populateTextBoxWithId(String id, String text) {
-        automatedBrowser.populateTextBoxWithId(id, text);
+        if (automatedBrowser != null) {
+            automatedBrowser.populateTextBoxWithId(id, text);
+        }
     }
 
     @Override
     public void populateTextBoxWithId(String id, String text, int waitTime) {
-        automatedBrowser.populateTextBoxWithId(id, text, waitTime);
+        if (automatedBrowser != null) {
+            automatedBrowser.populateTextBoxWithId(id, text, waitTime);
+        }
     }
 
     @Override
     public void clickLinkWithText(String text) {
-        automatedBrowser.clickLinkWithText(text);
+        if (automatedBrowser != null) {
+            automatedBrowser.clickLinkWithText(text);
+        }
     }
 
     @Override
     public void clickLinkWithText(String text, int wait) {
-        automatedBrowser.clickLinkWithText(text, wait);
+        if (automatedBrowser != null) {
+            automatedBrowser.clickLinkWithText(text, wait);
+        }
     }
 
     @Override
     public void clickElementWithXPath(String xpath) {
-        automatedBrowser.clickElementWithXPath(xpath);
+        if (automatedBrowser != null) {
+            automatedBrowser.clickElementWithXPath(xpath);
+        }
     }
 
     @Override
     public void selectOptionByTextFromSelectWithId(String id, String optionText, int waitTime) {
-        automatedBrowser.selectOptionByTextFromSelectWithId(id, optionText, waitTime);
+        if (automatedBrowser != null) {
+            automatedBrowser.selectOptionByTextFromSelectWithId(id, optionText, waitTime);
+        }
     }
 
     @Override
     public void selectOptionByTextFromSelectWithXPath(String xpath, String optionText) {
-        automatedBrowser.selectOptionByTextFromSelectWithXPath(xpath, optionText);
+        if (automatedBrowser != null) {
+            automatedBrowser.selectOptionByTextFromSelectWithXPath(xpath, optionText);
+        }
     }
 
     @Override
     public void selectOptionByTextFromSelectWithXPath(String xpath, String optionText, int waitTime) {
-        automatedBrowser.selectOptionByTextFromSelectWithXPath(xpath, optionText, waitTime);
+        if (automatedBrowser != null) {
+            automatedBrowser.selectOptionByTextFromSelectWithXPath(xpath, optionText, waitTime);
+        }
     }
 
     @Override
     public void selectOptionByTextFromSelectWithCSS(String css, String optionText) {
-        automatedBrowser.selectOptionByTextFromSelectWithCSS(css, optionText);
+        if (automatedBrowser != null) {
+            automatedBrowser.selectOptionByTextFromSelectWithCSS(css, optionText);
+        }
     }
 
     @Override
     public void selectOptionByTextFromSelectWithCSS(String css, String optionText, int waitTime) {
-        automatedBrowser.selectOptionByTextFromSelectWithCSS(css, optionText, waitTime);
+        if (automatedBrowser != null) {
+            automatedBrowser.selectOptionByTextFromSelectWithCSS(css, optionText, waitTime);
+        }
     }
 
     @Override
     public void clickElementWithXPath(String xpath, int waitTime) {
-        automatedBrowser.clickElementWithXPath(xpath, waitTime);
+        if (automatedBrowser != null) {
+            automatedBrowser.clickElementWithXPath(xpath, waitTime);
+        }
     }
 
     @Override
     public void clickElementWithCSS(String css) {
-        automatedBrowser.clickElementWithCSS(css);
+        if (automatedBrowser != null) {
+            automatedBrowser.clickElementWithCSS(css);
+        }
     }
 
     @Override
     public void clickElementWithCSS(String css, int waitTime) {
-        automatedBrowser.clickElementWithCSS(css, waitTime);
+        if (automatedBrowser != null) {
+            automatedBrowser.clickElementWithCSS(css, waitTime);
+        }
     }
 
     @Override
     public void populateTextBoxWithXPath(String xpath, String text) {
-        automatedBrowser.populateTextBoxWithXPath(xpath, text);
+        if (automatedBrowser != null) {
+            automatedBrowser.populateTextBoxWithXPath(xpath, text);
+        }
     }
 
     @Override
     public void populateTextBoxWithXPath(String xpath, String text, int waitTime) {
-        automatedBrowser.populateTextBoxWithXPath(xpath, text, waitTime);
+        if (automatedBrowser != null) {
+            automatedBrowser.populateTextBoxWithXPath(xpath, text, waitTime);
+        }
     }
 
     @Override
     public void populateTextBoxWithCSS(String css, String text) {
-        automatedBrowser.populateTextBoxWithCSS(css, text);
+        if (automatedBrowser != null) {
+            automatedBrowser.populateTextBoxWithCSS(css, text);
+        }
     }
 
     @Override
     public void populateTextBoxWithCSS(String css, String text, int waitTime) {
-        automatedBrowser.populateTextBoxWithCSS(css, text, waitTime);
+        if (automatedBrowser != null) {
+            automatedBrowser.populateTextBoxWithCSS(css, text, waitTime);
+        }
     }
 
     @Override
     public String getTextFromElementWithXPath(String xpath) {
-        return automatedBrowser.getTextFromElementWithXPath(xpath);
+        if (automatedBrowser != null) {
+            return automatedBrowser.getTextFromElementWithXPath(xpath);
+        }
+
+        return null;
     }
 
     @Override
     public String getTextFromElementWithXPath(String xpath, int waitTime) {
-        return automatedBrowser.getTextFromElementWithXPath(xpath, waitTime);
+        if (automatedBrowser != null) {
+            return automatedBrowser.getTextFromElementWithXPath(xpath, waitTime);
+        }
+
+        return null;
     }
 
     @Override
     public String getTextFromElementWithCSS(String css) {
-        return automatedBrowser.getTextFromElementWithCSS(css);
+        if (automatedBrowser != null) {
+            return automatedBrowser.getTextFromElementWithCSS(css);
+        }
+
+        return null;
     }
 
     @Override
     public String getTextFromElementWithCSS(String css, int waitTime) {
-        return automatedBrowser.getTextFromElementWithCSS(css, waitTime);
+        if (automatedBrowser != null) {
+            return automatedBrowser.getTextFromElementWithCSS(css, waitTime);
+        }
+
+        return null;
     }
 
     @Override
     public void alterRequestTo(String url, int responseCode) {
-        automatedBrowser.alterRequestTo(url, responseCode);
+        if (automatedBrowser != null) {
+            automatedBrowser.alterRequestTo(url, responseCode);
+        }
+    }
+
+    @Override
+    public void captureHarFile() {
+        if (automatedBrowser != null) {
+            automatedBrowser.captureHarFile();
+        }
+    }
+
+    @Override
+    public void saveHarFile(String file) {
+        if (automatedBrowser != null) {
+            automatedBrowser.saveHarFile(file);
+        }
     }
 }

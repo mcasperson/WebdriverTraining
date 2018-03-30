@@ -156,7 +156,8 @@ class FormTest {
         try {
             automatedBrowser.init();
             automatedBrowser.maximizeWindow();
-            automatedBrowser.alterRequestTo(".*?\\.png", 500);
+            automatedBrowser.alterRequestTo(".*?/rest/media/1", 404);
+            automatedBrowser.captureHarFile();
 
             final TicketMonster ticketMonster = new TicketMonster(automatedBrowser);
             ticketMonster.getWelcomePage().open();
@@ -172,6 +173,8 @@ class FormTest {
             ticketMonster.getBookings().checkout();
             final String confirmation = ticketMonster.getBookings().getConfirmationHeader();
             assertTrue(confirmation.contains("confirmed"));
+
+            automatedBrowser.saveHarFile("test.har");
         } finally {
             automatedBrowser.destroy();
         }

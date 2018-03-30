@@ -3,14 +3,12 @@ package com.matthewcasperson.pages.ticketmonster;
 import com.matthewcasperson.AutomatedBrowser;
 
 public class TicketMonster {
-    public static final int WAIT_TIME = 10;
-    private final AutomatedBrowser automatedBrowser;
+    public static final int WAIT_TIME = 30;
     private final WelcomePage welcomePage;
     private final EventsPage eventsPage;
     private final BookingPage bookingPage;
 
     public TicketMonster(AutomatedBrowser automatedBrowser) {
-        this.automatedBrowser = automatedBrowser;
         this.welcomePage = new WelcomePage(automatedBrowser);
         this.eventsPage = new EventsPage(automatedBrowser);
         this.bookingPage = new BookingPage(automatedBrowser);

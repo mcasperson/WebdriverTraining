@@ -1,5 +1,6 @@
-package com.matthewcasperson;
+package com.matthewcasperson.decorators;
 
+import com.matthewcasperson.AutomatedBrowserDecorator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -7,9 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
-public class AutomatedBrowserImpl implements AutomatedBrowser {
+public class WebDriverDecorator extends AutomatedBrowserDecorator {
     private WebDriver webDriver;
 
     @Override
@@ -23,28 +22,17 @@ public class AutomatedBrowserImpl implements AutomatedBrowser {
     }
 
     @Override
-    public void init() {
-        // this is implemented by a decorator
-    }
-
-    @Override
     public DesiredCapabilities getDesiredCapabilities() {
         return new DesiredCapabilities();
     }
 
     @Override
     public void goTo(final String url) {
-        checkNotNull(webDriver);
-        checkNotNull(url);
-
         webDriver.get(url);
     }
 
     @Override
     public void clickElementWithId(final String id) {
-        checkNotNull(webDriver);
-        checkNotNull(id);
-
         webDriver.findElement(By.id(id)).click();
     }
 
@@ -60,9 +48,6 @@ public class AutomatedBrowserImpl implements AutomatedBrowser {
 
     @Override
     public String getTextFromElementWithId(final String id) {
-        checkNotNull(webDriver);
-        checkNotNull(id);
-
         return webDriver.findElement(By.id(id)).getText();
     }
 
@@ -241,10 +226,5 @@ public class AutomatedBrowserImpl implements AutomatedBrowser {
             final WebDriverWait wait = new WebDriverWait(webDriver, waitTime);
             return wait.until(ExpectedConditions.presenceOfElementLocated((By.cssSelector(css)))).getText();
         }
-    }
-
-    @Override
-    public void alterRequestTo(String url, int response) {
-
     }
 }

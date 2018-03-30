@@ -23,7 +23,9 @@ public class AutomatedBrowserFactory {
         return new ChromeDecorator(
                 new ImplicitWaitDecorator(10,
                         new BrowserMobDecorator(
-                                new AutomatedBrowserImpl()
+                                new StepWaitDecorator(
+                                        new WebDriverDecorator()
+                                )
                         )
                 )
         );
@@ -33,7 +35,7 @@ public class AutomatedBrowserFactory {
         return new BrowserStackDecorator(
                 new ImplicitWaitDecorator(10,
                         new BrowserStackEdgeDecorator(
-                                new AutomatedBrowserImpl()
+                                new WebDriverDecorator()
                         )
                 )
         );
@@ -44,7 +46,7 @@ public class AutomatedBrowserFactory {
                 new ImplicitWaitDecorator(10,
                         new BrowserStackIPhoneDecorator(
                                 new IgnoreWindowSizeErrorsDecorator(
-                                        new AutomatedBrowserImpl()
+                                        new WebDriverDecorator()
                                 )
                         )
                 )
