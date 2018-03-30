@@ -126,7 +126,7 @@ public class AutomatedBrowserDecorator implements AutomatedBrowser {
     @Override
     public void selectOptionByTextFromSelectWithId(String optionText, String selectId) {
         if (getAutomatedBrowser() != null) {
-            getAutomatedBrowser().selectOptionByTextFromSelectWithId(selectId, optionText);
+            getAutomatedBrowser().selectOptionByTextFromSelectWithId(optionText, selectId);
         }
     }
 
@@ -182,7 +182,7 @@ public class AutomatedBrowserDecorator implements AutomatedBrowser {
     @Override
     public void selectOptionByTextFromSelectWithId(String optionText, String id, int waitTime) {
         if (getAutomatedBrowser() != null) {
-            getAutomatedBrowser().selectOptionByTextFromSelectWithId(id, optionText, waitTime);
+            getAutomatedBrowser().selectOptionByTextFromSelectWithId(optionText, id, waitTime);
         }
     }
 
@@ -190,7 +190,7 @@ public class AutomatedBrowserDecorator implements AutomatedBrowser {
     @Override
     public void selectOptionByTextFromSelectWithXPath(String optionText, String xpath) {
         if (getAutomatedBrowser() != null) {
-            getAutomatedBrowser().selectOptionByTextFromSelectWithXPath(xpath, optionText);
+            getAutomatedBrowser().selectOptionByTextFromSelectWithXPath(optionText, xpath);
         }
     }
 
@@ -198,7 +198,7 @@ public class AutomatedBrowserDecorator implements AutomatedBrowser {
     @Override
     public void selectOptionByTextFromSelectWithXPath(String optionText, String xpath, int waitTime) {
         if (getAutomatedBrowser() != null) {
-            getAutomatedBrowser().selectOptionByTextFromSelectWithXPath(xpath, optionText, waitTime);
+            getAutomatedBrowser().selectOptionByTextFromSelectWithXPath(optionText, xpath, waitTime);
         }
     }
 
@@ -206,7 +206,7 @@ public class AutomatedBrowserDecorator implements AutomatedBrowser {
     @Override
     public void selectOptionByTextFromSelectWithCSS(String optionText, String css) {
         if (getAutomatedBrowser() != null) {
-            getAutomatedBrowser().selectOptionByTextFromSelectWithCSS(css, optionText);
+            getAutomatedBrowser().selectOptionByTextFromSelectWithCSS(optionText, css);
         }
     }
 
@@ -214,7 +214,7 @@ public class AutomatedBrowserDecorator implements AutomatedBrowser {
     @Override
     public void selectOptionByTextFromSelectWithCSS(String optionText, String css, int waitTime) {
         if (getAutomatedBrowser() != null) {
-            getAutomatedBrowser().selectOptionByTextFromSelectWithCSS(css, optionText, waitTime);
+            getAutomatedBrowser().selectOptionByTextFromSelectWithCSS(optionText, css, waitTime);
         }
     }
 
