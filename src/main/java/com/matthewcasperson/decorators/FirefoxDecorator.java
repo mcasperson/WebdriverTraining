@@ -5,21 +5,19 @@ import com.matthewcasperson.AutomatedBrowserDecorator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
-public class ChromeHeadlessDecorator extends AutomatedBrowserDecorator {
-    public ChromeHeadlessDecorator(final AutomatedBrowser automatedBrowser) {
+public class FirefoxDecorator extends AutomatedBrowserDecorator {
+    public FirefoxDecorator(final AutomatedBrowser automatedBrowser) {
         super(automatedBrowser);
     }
 
     @Override
     public void init() {
-        final ChromeOptions options = new ChromeOptions();
-        options.addArguments("allow-running-insecure-content");
-        options.addArguments("disable-gpu");
-        options.addArguments("headless");
-        options.addArguments("no-sandbox");
+        final FirefoxOptions options = new FirefoxOptions();
         options.merge(getDesiredCapabilities());
-        final WebDriver webDriver = new ChromeDriver(options);
+        final WebDriver webDriver = new FirefoxDriver(options);
         automatedBrowser.setWebDriver(webDriver);
         automatedBrowser.init();
     }

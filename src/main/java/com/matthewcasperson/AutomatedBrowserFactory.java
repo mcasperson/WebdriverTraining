@@ -12,6 +12,14 @@ public class AutomatedBrowserFactory {
             return getChromeHeadlessBrowser();
         }
 
+        if ("Firefox".equalsIgnoreCase(browser)) {
+            return getFirefoxBrowser();
+        }
+
+        if ("FirefoxHeadless".equalsIgnoreCase(browser)) {
+            return getFirefoxHeadlessBrowser();
+        }
+
         if ("BrowserStackEdge".equalsIgnoreCase(browser)) {
             return getBrowserStackBrowser();
         }
@@ -35,11 +43,35 @@ public class AutomatedBrowserFactory {
         );
     }
 
+    private AutomatedBrowser getFirefoxBrowser() {
+        return new FirefoxDecorator(
+                new ImplicitWaitDecorator(10,
+                        new BrowserMobDecorator(
+                                new StepWaitDecorator(
+                                        new WebDriverDecorator()
+                                )
+                        )
+                )
+        );
+    }
+
     private AutomatedBrowser getChromeHeadlessBrowser() {
         return new ChromeHeadlessDecorator(
                 new ImplicitWaitDecorator(10,
                         new BrowserMobDecorator(
                                 new WebDriverDecorator()
+                        )
+                )
+        );
+    }
+
+    private AutomatedBrowser getFirefoxHeadlessBrowser() {
+        return new FirefoxHeadlessDecorator(
+                new ImplicitWaitDecorator(10,
+                        new BrowserMobDecorator(
+                                new StepWaitDecorator(
+                                        new WebDriverDecorator()
+                                )
                         )
                 )
         );
