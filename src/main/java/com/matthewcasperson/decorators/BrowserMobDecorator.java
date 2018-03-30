@@ -39,6 +39,7 @@ public class BrowserMobDecorator extends AutomatedBrowserDecorator {
         final InetSocketAddress connectableAddressAndPort = new InetSocketAddress(connectableAddress, proxy.getPort());
         final String proxyStr = String.format("%s:%d", connectableAddressAndPort.getHostString(), connectableAddressAndPort.getPort());
         seleniumProxy.setSocksProxy(proxyStr);
+        seleniumProxy.setSocksVersion(5);
 
         desiredCapabilities.setCapability(CapabilityType.PROXY, seleniumProxy);
 
