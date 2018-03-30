@@ -8,6 +8,10 @@ public class AutomatedBrowserFactory {
             return getChromeBrowser();
         }
 
+        if ("ChromeHeadless".equalsIgnoreCase(browser)) {
+            return getChromeHeadlessBrowser();
+        }
+
         if ("BrowserStackEdge".equalsIgnoreCase(browser)) {
             return getBrowserStackBrowser();
         }
@@ -26,6 +30,16 @@ public class AutomatedBrowserFactory {
                                 new StepWaitDecorator(
                                         new WebDriverDecorator()
                                 )
+                        )
+                )
+        );
+    }
+
+    private AutomatedBrowser getChromeHeadlessBrowser() {
+        return new ChromeHeadlessDecorator(
+                new ImplicitWaitDecorator(10,
+                        new BrowserMobDecorator(
+                                new WebDriverDecorator()
                         )
                 )
         );
