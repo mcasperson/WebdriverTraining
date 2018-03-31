@@ -5,6 +5,7 @@ import com.amazonaws.services.lambda.runtime.Context;
 import org.apache.commons.io.FileUtils;
 
 import java.io.*;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.util.zip.ZipEntry;
@@ -83,9 +84,15 @@ public class LambdaEntry extends RequestHandler2 {
 
     private File writeFeatureToFile(String feature) throws IOException {
         final File featureFile = File.createTempFile("cucumber", ".feature");
-        try (PrintWriter out = new PrintWriter(featureFile)) {
-            out.println(feature);
+        try {
+            final URL url = new URL(feature);
+            FileUtils.copyURLToFile(url, featureFile);
+        } catch (final MalformedURLException ex) {
+            try (PrintWriter out = new PrintWriter(featureFile)) {
+                out.println(feature);
+            }
         }
+
         return featureFile;
     }
 }
