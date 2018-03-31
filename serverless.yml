@@ -14,4 +14,4 @@ functions:
     package:
       artifact: target/webdrivertraining-1.0-SNAPSHOT.jar
     timeout: 300
-    memorySize: 1536
+    memorySize: 512

@@ -23,7 +23,7 @@ public class LambdaEntry extends RequestHandler2 {
         try {
             final File featureFile = writeFeatureToFile(feature);
             return cucumber.api.cli.Main.run(
-                    new String[]{"--glue", "com.matthewcasperson.decoratorbase", featureFile.getAbsolutePath()},
+                    new String[]{"--monochrome", "--glue", "com.matthewcasperson.decoratorbase", featureFile.getAbsolutePath()},
                     Thread.currentThread().getContextClassLoader()) == 0;
         } finally {
             FileUtils.deleteQuietly(driverDirectory);
