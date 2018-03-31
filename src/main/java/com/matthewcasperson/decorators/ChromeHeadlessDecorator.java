@@ -18,6 +18,9 @@ public class ChromeHeadlessDecorator extends AutomatedBrowserDecorator {
         options.addArguments("disable-gpu");
         options.addArguments("headless");
         options.addArguments("no-sandbox");
+        if (System.getProperty("chrome.binary") != null) {
+            options.setBinary(System.getProperty("chrome.binary"));
+        }
         options.merge(getDesiredCapabilities());
         final WebDriver webDriver = new ChromeDriver(options);
         getAutomatedBrowser().setWebDriver(webDriver);
