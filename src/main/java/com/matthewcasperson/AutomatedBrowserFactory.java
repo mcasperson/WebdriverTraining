@@ -12,6 +12,10 @@ public class AutomatedBrowserFactory {
             return getChromeHeadlessBrowser();
         }
 
+        if ("ChromeHeadlessLambda".equalsIgnoreCase(browser)) {
+            return getChromeHeadlessLambdaBrowser();
+        }
+
         if ("Firefox".equalsIgnoreCase(browser)) {
             return getFirefoxBrowser();
         }
@@ -70,6 +74,16 @@ public class AutomatedBrowserFactory {
                                 new BrowserMobDecorator(
                                         new WebDriverDecorator()
                                 )
+                        )
+                )
+        );
+    }
+
+    private AutomatedBrowser getChromeHeadlessLambdaBrowser() {
+        return new ChromeHeadlessLambdaDecorator(
+                new FailStateHandlerDecorator(
+                        new ImplicitWaitDecorator(10,
+                                new WebDriverDecorator()
                         )
                 )
         );

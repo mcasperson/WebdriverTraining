@@ -32,23 +32,31 @@ public class LambdaEntry extends RequestHandler2 {
 
     private File downloadChromeDriver() throws IOException {
         final File downloadedFile = File.createTempFile("chrome_driver", ".zip");
-        FileUtils.copyURLToFile(new URL(CHROME_DRIVER), downloadedFile);
-        final File extractedDir = Files.createTempDirectory("chrome_driver").toFile();
-        unzipFile(downloadedFile.getAbsolutePath(), extractedDir.getAbsolutePath());
-        System.setProperty("webdriver.chrome.driver", extractedDir.getAbsolutePath() + "/chromedriver");
-        new File(extractedDir.getAbsolutePath() + "/chromedriver").setExecutable(true);
-        return extractedDir;
+        try {
+            FileUtils.copyURLToFile(new URL(CHROME_DRIVER), downloadedFile);
+            final File extractedDir = Files.createTempDirectory("chrome_driver").toFile();
+            unzipFile(downloadedFile.getAbsolutePath(), extractedDir.getAbsolutePath());
+            System.setProperty("webdriver.chrome.driver", extractedDir.getAbsolutePath() + "/chromedriver");
+            new File(extractedDir.getAbsolutePath() + "/chromedriver").setExecutable(true);
+            return extractedDir;
+        } finally {
+            FileUtils.deleteQuietly(downloadedFile);
+        }
 
     }
 
     private File downloadChromeHeadless() throws IOException {
         final File downloadedFile = File.createTempFile("chrome_headless", ".zip");
-        FileUtils.copyURLToFile(new URL(CHROME_HEADLESS_PACKAGE), downloadedFile);
-        final File extractedDir = Files.createTempDirectory("chrome_headless").toFile();
-        unzipFile(downloadedFile.getAbsolutePath(), extractedDir.getAbsolutePath());
-        System.setProperty("chrome.binary", extractedDir.getAbsolutePath() + "/headless_shell");
-        new File(extractedDir.getAbsolutePath() + "/headless_shell").setExecutable(true);
-        return extractedDir;
+        try {
+            FileUtils.copyURLToFile(new URL(CHROME_HEADLESS_PACKAGE), downloadedFile);
+            final File extractedDir = Files.createTempDirectory("chrome_headless").toFile();
+            unzipFile(downloadedFile.getAbsolutePath(), extractedDir.getAbsolutePath());
+            System.setProperty("chrome.binary", extractedDir.getAbsolutePath() + "/headless_shell");
+            new File(extractedDir.getAbsolutePath() + "/headless_shell").setExecutable(true);
+            return extractedDir;
+        } finally {
+            FileUtils.deleteQuietly(downloadedFile);
+        }
     }
 
     /**

@@ -6,8 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-public class ChromeHeadlessDecorator extends AutomatedBrowserDecorator {
-    public ChromeHeadlessDecorator(final AutomatedBrowser automatedBrowser) {
+public class ChromeHeadlessLambdaDecorator extends AutomatedBrowserDecorator {
+    public ChromeHeadlessLambdaDecorator(final AutomatedBrowser automatedBrowser) {
         super(automatedBrowser);
     }
 
@@ -19,6 +19,10 @@ public class ChromeHeadlessDecorator extends AutomatedBrowserDecorator {
         options.addArguments("--window-size=1366,768");
         options.addArguments("--single-process");
         options.addArguments("--no-sandbox");
+        options.addArguments("--user-data-dir=/tmp/user-data");
+        options.addArguments("--data-path=/tmp/data-path");
+        options.addArguments("--homedir=/tmp");
+        options.addArguments("--disk-cache-dir=/tmp/cache-dir");
         if (System.getProperty("chrome.binary") != null) {
             options.setBinary(System.getProperty("chrome.binary"));
         }
