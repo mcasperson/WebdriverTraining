@@ -12,14 +12,14 @@ public class BookingPage {
     }
 
     public void selectFrontLeft() {
-        automatedBrowser.selectOptionByTextFromSelectWithId("sectionSelect", "S1 - Front left", WAIT_TIME);
+        automatedBrowser.selectOptionByTextFromSelectWithId("S1 - Front left", "sectionSelect", WAIT_TIME);
     }
 
     public void addAdultTickets(Integer number) {
         automatedBrowser.populateElementWithXPath(
                 "/html/body/div[2]/div[2]/div[2]/div[1]/div/div/form/div[1]/div/div/input",
                 number.toString(),
-                10);
+                WAIT_TIME);
     }
 
     public void addTickets() {

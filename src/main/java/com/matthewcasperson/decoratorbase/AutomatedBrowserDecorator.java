@@ -6,6 +6,7 @@ import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -326,6 +327,102 @@ public class AutomatedBrowserDecorator implements AutomatedBrowser {
         }
 
         return null;
+    }
+
+    @Then("^I verify the text from the element with the id \"(.*?)\" equals \"(.*?)\"$")
+    @Override
+    public void verifyTextFromElementWithIdEquals(String id, String expected) {
+        if (getAutomatedBrowser() != null) {
+            getAutomatedBrowser().verifyTextFromElementWithIdEquals(id, expected);
+        }
+    }
+
+    @Then("^I verify the text from the element with the id \"(.*?)\" equals \"(.*?)\" waiting up to \"(\\d+)\" seconds$")
+    @Override
+    public void verifyTextFromElementWithIdEquals(String id, String expected, int waitTime) {
+        if (getAutomatedBrowser() != null) {
+            getAutomatedBrowser().verifyTextFromElementWithIdEquals(id, expected, waitTime);
+        }
+    }
+
+    @Then("^I verify the text from the element with the xpath \"(.*?)\" equals \"(.*?)\"$")
+    @Override
+    public void verifyTextFromElementWithXPathEquals(String xpath, String expected) {
+        if (getAutomatedBrowser() != null) {
+            getAutomatedBrowser().verifyTextFromElementWithXPathEquals(xpath, expected);
+        }
+    }
+
+    @Then("^I verify the text from the element with the xpath \"(.*?)\" equals \"(.*?)\" waiting up to \"(\\d+)\" seconds$")
+    @Override
+    public void verifyTextFromElementWithXPathEquals(String xpath, String expected, int waitTime) {
+        if (getAutomatedBrowser() != null) {
+            getAutomatedBrowser().verifyTextFromElementWithXPathEquals(xpath, expected, waitTime);
+        }
+    }
+
+    @Then("^I verify the text from the element with the css selector \"(.*?)\" equals \"(.*?)\"$")
+    @Override
+    public void verifyTextFromElementWithCSSEquals(String css, String expected) {
+        if (getAutomatedBrowser() != null) {
+            getAutomatedBrowser().verifyTextFromElementWithCSSEquals(css, expected);
+        }
+    }
+
+    @Then("^I verify the text from the element with the css selector \"(.*?)\" equals \"(.*?)\" waiting up to \"(\\d+)\" seconds$")
+    @Override
+    public void verifyTextFromElementWithCSSEquals(String css, String expected, int waitTime) {
+        if (getAutomatedBrowser() != null) {
+            getAutomatedBrowser().verifyTextFromElementWithCSSEquals(css, expected, waitTime);
+        }
+    }
+
+    @Then("^I verify the text from the element with the id \"(.*?)\" contains \"(.*?)\"$")
+    @Override
+    public void verifyTextFromElementWithIdContains(String id, String expected) {
+        if (getAutomatedBrowser() != null) {
+            getAutomatedBrowser().verifyTextFromElementWithIdContains(id, expected);
+        }
+    }
+
+    @Then("^I verify the text from the element with the id \"(.*?)\" contains \"(.*?)\" waiting up to \"(\\d+)\" seconds$")
+    @Override
+    public void verifyTextFromElementWithIdContains(String id, String expected, int waitTime) {
+        if (getAutomatedBrowser() != null) {
+            getAutomatedBrowser().verifyTextFromElementWithIdContains(id, expected, waitTime);
+        }
+    }
+
+    @Then("^I verify the text from the element with the xpath \"(.*?)\" contains \"(.*?)\"$")
+    @Override
+    public void verifyTextFromElementWithXPathContains(String xpath, String expected) {
+        if (getAutomatedBrowser() != null) {
+            getAutomatedBrowser().verifyTextFromElementWithXPathContains(xpath, expected);
+        }
+    }
+
+    @Then("^I verify the text from the element with the xpath \"(.*?)\" contains \"(.*?)\" waiting up to \"(\\d+)\" seconds$")
+    @Override
+    public void verifyTextFromElementWithXPathContains(String xpath, String expected, int waitTime) {
+        if (getAutomatedBrowser() != null) {
+            getAutomatedBrowser().verifyTextFromElementWithXPathContains(xpath, expected, waitTime);
+        }
+    }
+
+    @Then("^I verify the text from the element with the css selector \"(.*?)\" contains \"(.*?)\"$")
+    @Override
+    public void verifyTextFromElementWithCSSContains(String css, String expected) {
+        if (getAutomatedBrowser() != null) {
+            getAutomatedBrowser().verifyTextFromElementWithCSSContains(css, expected);
+        }
+    }
+
+    @Then("^I verify the text from the element with the css selector \"(.*?)\" contains \"(.*?)\" waiting up to \"(\\d+)\" seconds$")
+    @Override
+    public void verifyTextFromElementWithCSSContains(String css, String expected, int waitTime) {
+        if (getAutomatedBrowser() != null) {
+            getAutomatedBrowser().verifyTextFromElementWithCSSContains(css, expected, waitTime);
+        }
     }
 
     @And("^I alter requests to urls matching the regex \"(.*?)\" by returning the http code \"(\\d+)\"$")

@@ -1,6 +1,7 @@
 package com.matthewcasperson.decorators;
 
 import com.matthewcasperson.decoratorbase.AutomatedBrowserDecorator;
+import com.matthewcasperson.exceptions.ValidationException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -80,7 +81,12 @@ public class WebDriverDecorator extends AutomatedBrowserDecorator {
 
     @Override
     public void populateElementWithId(String id, String text, int waitTime) {
-
+        if (waitTime <= 0) {
+            populateElementWithId(id, text);
+        } else {
+            final WebDriverWait wait = new WebDriverWait(webDriver, waitTime);
+            wait.until(ExpectedConditions.elementToBeClickable((By.id(id)))).sendKeys(text);
+        }
     }
 
     @Override
@@ -225,6 +231,102 @@ public class WebDriverDecorator extends AutomatedBrowserDecorator {
         } else {
             final WebDriverWait wait = new WebDriverWait(webDriver, waitTime);
             return wait.until(ExpectedConditions.presenceOfElementLocated((By.cssSelector(css)))).getText();
+        }
+    }
+
+    @Override
+    public void verifyTextFromElementWithIdEquals(String id, String expected) {
+        final String text = getTextFromElementWithId(id);
+        if (!expected.equals(text)) {
+            throw new ValidationException(text + " does not equal the expected text " + expected);
+        }
+    }
+
+    @Override
+    public void verifyTextFromElementWithIdEquals(String id, String expected, int wait) {
+        final String text = getTextFromElementWithId(id, wait);
+        if (!expected.equals(text)) {
+            throw new ValidationException(text + " does not equal the expected text " + expected);
+        }
+    }
+
+    @Override
+    public void verifyTextFromElementWithXPathEquals(String xpath, String expected) {
+        final String text = getTextFromElementWithXPath(xpath);
+        if (!expected.equals(text)) {
+            throw new ValidationException(text + " does not equal the expected text " + expected);
+        }
+    }
+
+    @Override
+    public void verifyTextFromElementWithXPathEquals(String xpath, String expected, int waitTime) {
+        final String text = getTextFromElementWithXPath(xpath, waitTime);
+        if (!expected.equals(text)) {
+            throw new ValidationException(text + " does not equal the expected text " + expected);
+        }
+    }
+
+    @Override
+    public void verifyTextFromElementWithCSSEquals(String css, String expected) {
+        final String text = getTextFromElementWithCSS(css);
+        if (!expected.equals(text)) {
+            throw new ValidationException(text + " does not equal the expected text " + expected);
+        }
+    }
+
+    @Override
+    public void verifyTextFromElementWithCSSEquals(String css, String expected, int waitTime) {
+        final String text = getTextFromElementWithCSS(css, waitTime);
+        if (!expected.equals(text)) {
+            throw new ValidationException(text + " does not equal the expected text " + expected);
+        }
+    }
+
+    @Override
+    public void verifyTextFromElementWithIdContains(String id, String expected) {
+        final String text = getTextFromElementWithId(id);
+        if (!text.contains(expected)) {
+            throw new ValidationException(text + " does not contain the expected text " + expected);
+        }
+    }
+
+    @Override
+    public void verifyTextFromElementWithIdContains(String id, String expected, int wait) {
+        final String text = getTextFromElementWithId(id, wait);
+        if (!text.contains(expected)) {
+            throw new ValidationException(text + " does not contain the expected text " + expected);
+        }
+    }
+
+    @Override
+    public void verifyTextFromElementWithXPathContains(String xpath, String expected) {
+        final String text = getTextFromElementWithXPath(xpath);
+        if (!text.contains(expected)) {
+            throw new ValidationException(text + " does not contain the expected text " + expected);
+        }
+    }
+
+    @Override
+    public void verifyTextFromElementWithXPathContains(String xpath, String expected, int waitTime) {
+        final String text = getTextFromElementWithXPath(xpath, waitTime);
+        if (!text.contains(expected)) {
+            throw new ValidationException(text + " does not contain the expected text " + expected);
+        }
+    }
+
+    @Override
+    public void verifyTextFromElementWithCSSContains(String css, String expected) {
+        final String text = getTextFromElementWithCSS(css);
+        if (!text.contains(expected)) {
+            throw new ValidationException(text + " does not contain the expected text " + expected);
+        }
+    }
+
+    @Override
+    public void verifyTextFromElementWithCSSContains(String css, String expected, int waitTime) {
+        final String text = getTextFromElementWithCSS(css, waitTime);
+        if (!text.contains(expected)) {
+            throw new ValidationException(text + " does not contain the expected text " + expected);
         }
     }
 }

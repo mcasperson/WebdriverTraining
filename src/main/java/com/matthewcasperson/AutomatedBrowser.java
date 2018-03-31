@@ -64,7 +64,7 @@ public interface AutomatedBrowser {
 
     String getTextFromElementWithId(String id);
 
-    String getTextFromElementWithId(String id, int wait);
+    String getTextFromElementWithId(String id, int waitTime);
 
     String getTextFromElementWithXPath(String xpath);
 
@@ -73,6 +73,30 @@ public interface AutomatedBrowser {
     String getTextFromElementWithCSS(String css);
 
     String getTextFromElementWithCSS(String css, int waitTime);
+
+    void verifyTextFromElementWithIdEquals(String id, String expected);
+
+    void verifyTextFromElementWithIdEquals(String id, String expected, int waitTime);
+
+    void verifyTextFromElementWithXPathEquals(String xpath, String expected);
+
+    void verifyTextFromElementWithXPathEquals(String xpath, String expected, int waitTime);
+
+    void verifyTextFromElementWithCSSEquals(String css, String expected);
+
+    void verifyTextFromElementWithCSSEquals(String css, String expected, int waitTime);
+
+    void verifyTextFromElementWithIdContains(String id, String expected);
+
+    void verifyTextFromElementWithIdContains(String id, String expected, int waitTime);
+
+    void verifyTextFromElementWithXPathContains(String xpath, String expected);
+
+    void verifyTextFromElementWithXPathContains(String xpath, String expected, int waitTime);
+
+    void verifyTextFromElementWithCSSContains(String css, String expected);
+
+    void verifyTextFromElementWithCSSContains(String css, String expected, int waitTime);
 
     void alterRequestTo(String url, int responseCode);
 
