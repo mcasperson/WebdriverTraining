@@ -5,15 +5,22 @@ import com.matthewcasperson.decoratorbase.AutomatedBrowserDecorator;
 
 public class StepWaitDecorator extends AutomatedBrowserDecorator {
 
-    private static final int SLEEP = 2000;
+    private static final int DEFAULT_SLEEP = 2000;
+    private final int sleep;
 
     public StepWaitDecorator(AutomatedBrowser automatedBrowser) {
         super(automatedBrowser);
+        sleep = DEFAULT_SLEEP;
+    }
+
+    public StepWaitDecorator(int sleep, AutomatedBrowser automatedBrowser) {
+        super(automatedBrowser);
+        this.sleep = sleep;
     }
 
     private void sleep() {
         try {
-            Thread.sleep(SLEEP);
+            Thread.sleep(sleep);
         } catch (final InterruptedException ex) {
             // ignored
         }
