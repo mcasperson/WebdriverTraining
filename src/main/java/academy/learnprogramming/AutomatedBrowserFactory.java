@@ -1,5 +1,9 @@
 package academy.learnprogramming;
 
+import academy.learnprogramming.decorators.ChromeDecorator;
+import academy.learnprogramming.decorators.FirefoxDecorator;
+import academy.learnprogramming.decorators.WebDriverDecorator;
+
 public class AutomatedBrowserFactory {
     public AutomatedBrowser getAutomatedBrowser(String browser) {
         if ("Chrome".equalsIgnoreCase(browser)) {
@@ -14,10 +18,14 @@ public class AutomatedBrowserFactory {
     }
 
     private AutomatedBrowser getChromeBrowser() {
-        return null;
+        return new ChromeDecorator(
+                new WebDriverDecorator()
+        );
     }
 
     private AutomatedBrowser getFirefoxBrowser() {
-        return null;
+        return new FirefoxDecorator(
+                new WebDriverDecorator()
+        );
     }
 }
