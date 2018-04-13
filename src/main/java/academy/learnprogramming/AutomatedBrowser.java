@@ -20,4 +20,12 @@ public interface AutomatedBrowser {
     void populateElementWithId(String id, String text);
 
     String getTextFromElementWithId(String id);
+
+    void clickElementWithXPath(String xpath);
+
+    void selectOptionByTextFromSelectWithXPath(String optionText, String xpath);
+
+    void populateElementWithXPath(String xpath, String text);
+
+    String getTextFromElementWithXPath(String xpath);
 }

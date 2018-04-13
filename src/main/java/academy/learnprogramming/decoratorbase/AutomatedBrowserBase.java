@@ -84,4 +84,34 @@ public class AutomatedBrowserBase implements AutomatedBrowser {
 
         return null;
     }
+
+    @Override
+    public void clickElementWithXPath(String xpath) {
+        if (getAutomatedBrowser() != null) {
+            getAutomatedBrowser().clickElementWithXPath(xpath);
+        }
+    }
+
+    @Override
+    public void selectOptionByTextFromSelectWithXPath(String optionText, String xpath) {
+        if (getAutomatedBrowser() != null) {
+            getAutomatedBrowser().selectOptionByTextFromSelectWithXPath(optionText, xpath);
+        }
+    }
+
+    @Override
+    public void populateElementWithXPath(String xpath, String text) {
+        if (getAutomatedBrowser() != null) {
+            getAutomatedBrowser().populateElementWithXPath(xpath, text);
+        }
+    }
+
+    @Override
+    public String getTextFromElementWithXPath(String xpath) {
+        if (getAutomatedBrowser() != null) {
+            return getAutomatedBrowser().getTextFromElementWithXPath(xpath);
+        }
+
+        return null;
+    }
 }

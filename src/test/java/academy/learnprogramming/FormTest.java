@@ -43,4 +43,39 @@ public class FormTest {
             automatedBrowser.destroy();
         }
     }
+
+    @Test
+    public void formTestByXPath() throws URISyntaxException {
+        final AutomatedBrowser automatedBrowser = AUTOMATED_BROWSER_FACTORY.getAutomatedBrowser("Chrome");
+        try {
+            automatedBrowser.init();
+            automatedBrowser.goTo(FormTest.class.getResource("/form.html").toURI().toString());
+
+            automatedBrowser.clickElementWithXPath("//*[@id=\"button_element\"]");
+            assertEquals("Button Clicked", automatedBrowser.getTextFromElementWithId("message"));
+
+            automatedBrowser.populateElementWithXPath("//*[@id=\"text_element\"]", "test text");
+            assertEquals("Text Input Changed", automatedBrowser.getTextFromElementWithId("message"));
+
+            automatedBrowser.populateElementWithXPath("//*[@id=\"textarea_element\"]", "test text");
+            assertEquals("Text Area Changed", automatedBrowser.getTextFromElementWithId("message"));
+
+            automatedBrowser.selectOptionByTextFromSelectWithXPath("Option 2.1", "//*[@id=\"select_element\"]");
+            assertEquals("Select Changed", automatedBrowser.getTextFromElementWithId("message"));
+
+            automatedBrowser.clickElementWithXPath("//*[@id=\"radio3_element\"]");
+            assertEquals("Radio Button Changed", automatedBrowser.getTextFromElementWithId("message"));
+
+            automatedBrowser.clickElementWithXPath("//*[@id=\"checkbox2_element\"]");
+            assertEquals("Checkbox Changed", automatedBrowser.getTextFromElementWithId("message"));
+
+            automatedBrowser.clickElementWithXPath("//*[@id=\"image_element\"]");
+            assertEquals("Image Clicked", automatedBrowser.getTextFromElementWithId("message"));
+
+            automatedBrowser.clickElementWithXPath("//*[@id=\"div_element\"]");
+            assertEquals("Div Clicked", automatedBrowser.getTextFromElementWithId("message"));
+        } finally {
+            automatedBrowser.destroy();
+        }
+    }
 }
