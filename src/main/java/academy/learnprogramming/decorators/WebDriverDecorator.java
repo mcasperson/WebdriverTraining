@@ -78,4 +78,24 @@ public class WebDriverDecorator extends AutomatedBrowserBase {
     public String getTextFromElementWithXPath(String xpath) {
         return webDriver.findElement(By.xpath(xpath)).getText();
     }
+
+    @Override
+    public void clickElementWithCSSSelector(String cssSelector) {
+        webDriver.findElement(By.cssSelector(cssSelector)).click();
+    }
+
+    @Override
+    public void selectOptionByTextFromSelectWithCSSSelector(String optionText, String cssSelector) {
+        new Select(webDriver.findElement(By.cssSelector(cssSelector))).selectByVisibleText(optionText);
+    }
+
+    @Override
+    public void populateElementWithCSSSelector(String cssSelector, String text) {
+        webDriver.findElement(By.cssSelector(cssSelector)).sendKeys(text);
+    }
+
+    @Override
+    public String getTextFromElementWithCSSSelector(String cssSelector) {
+        return webDriver.findElement(By.cssSelector(cssSelector)).getText();
+    }
 }

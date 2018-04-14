@@ -28,4 +28,12 @@ public interface AutomatedBrowser {
     void populateElementWithXPath(String xpath, String text);
 
     String getTextFromElementWithXPath(String xpath);
+
+    void clickElementWithCSSSelector(String cssSelector);
+
+    void selectOptionByTextFromSelectWithCSSSelector(String optionText, String cssSelector);
+
+    void populateElementWithCSSSelector(String cssSelector, String text);
+
+    String getTextFromElementWithCSSSelector(String cssSelector);
 }

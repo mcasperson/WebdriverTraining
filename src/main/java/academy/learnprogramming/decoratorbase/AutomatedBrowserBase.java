@@ -114,4 +114,34 @@ public class AutomatedBrowserBase implements AutomatedBrowser {
 
         return null;
     }
+
+    @Override
+    public void clickElementWithCSSSelector(String cssSelector) {
+        if (getAutomatedBrowser() != null) {
+            getAutomatedBrowser().clickElementWithCSSSelector(cssSelector);
+        }
+    }
+
+    @Override
+    public void selectOptionByTextFromSelectWithCSSSelector(String optionText, String cssSelector) {
+        if (getAutomatedBrowser() != null) {
+            getAutomatedBrowser().selectOptionByTextFromSelectWithCSSSelector(optionText, cssSelector);
+        }
+    }
+
+    @Override
+    public void populateElementWithCSSSelector(String cssSelector, String text) {
+        if (getAutomatedBrowser() != null) {
+            getAutomatedBrowser().populateElementWithCSSSelector(cssSelector, text);
+        }
+    }
+
+    @Override
+    public String getTextFromElementWithCSSSelector(String cssSelector) {
+        if (getAutomatedBrowser() != null) {
+            return getAutomatedBrowser().getTextFromElementWithCSSSelector(cssSelector);
+        }
+
+        return null;
+    }
 }
