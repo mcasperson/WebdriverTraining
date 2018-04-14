@@ -2,6 +2,7 @@ package academy.learnprogramming;
 
 import academy.learnprogramming.decorators.ChromeDecorator;
 import academy.learnprogramming.decorators.FirefoxDecorator;
+import academy.learnprogramming.decorators.ImplicitWaitDecorator;
 import academy.learnprogramming.decorators.WebDriverDecorator;
 
 public class AutomatedBrowserFactory {
@@ -19,7 +20,9 @@ public class AutomatedBrowserFactory {
 
     private AutomatedBrowser getChromeBrowser() {
         return new ChromeDecorator(
-                new WebDriverDecorator()
+                new ImplicitWaitDecorator(10,
+                        new WebDriverDecorator()
+                )
         );
     }
 
