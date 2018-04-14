@@ -77,9 +77,23 @@ public class AutomatedBrowserBase implements AutomatedBrowser {
     }
 
     @Override
+    public void selectOptionByTextFromSelectWithId(String optionText, String id, int waitTime) {
+        if (getAutomatedBrowser() != null) {
+            getAutomatedBrowser().selectOptionByTextFromSelectWithId(optionText, id, waitTime);
+        }
+    }
+
+    @Override
     public void populateElementWithId(String id, String text) {
         if (getAutomatedBrowser() != null) {
             getAutomatedBrowser().populateElementWithId(id, text);
+        }
+    }
+
+    @Override
+    public void populateElementWithId(String id, String text, int waitTime) {
+        if (getAutomatedBrowser() != null) {
+            getAutomatedBrowser().populateElementWithId(id, text, waitTime);
         }
     }
 
@@ -93,9 +107,25 @@ public class AutomatedBrowserBase implements AutomatedBrowser {
     }
 
     @Override
+    public String getTextFromElementWithId(String id, int waitTime) {
+        if (getAutomatedBrowser() != null) {
+            return getAutomatedBrowser().getTextFromElementWithId(id, waitTime);
+        }
+
+        return null;
+    }
+
+    @Override
     public void clickElementWithXPath(String xpath) {
         if (getAutomatedBrowser() != null) {
             getAutomatedBrowser().clickElementWithXPath(xpath);
+        }
+    }
+
+    @Override
+    public void clickElementWithXPath(String xpath, int waitTime) {
+        if (getAutomatedBrowser() != null) {
+            getAutomatedBrowser().clickElementWithXPath(xpath, waitTime);
         }
     }
 
@@ -107,9 +137,23 @@ public class AutomatedBrowserBase implements AutomatedBrowser {
     }
 
     @Override
+    public void selectOptionByTextFromSelectWithXPath(String optionText, String xpath, int waitTime) {
+        if (getAutomatedBrowser() != null) {
+            getAutomatedBrowser().selectOptionByTextFromSelectWithXPath(optionText, xpath, waitTime);
+        }
+    }
+
+    @Override
     public void populateElementWithXPath(String xpath, String text) {
         if (getAutomatedBrowser() != null) {
             getAutomatedBrowser().populateElementWithXPath(xpath, text);
+        }
+    }
+
+    @Override
+    public void populateElementWithXPath(String xpath, String text, int waitTime) {
+        if (getAutomatedBrowser() != null) {
+            getAutomatedBrowser().populateElementWithXPath(xpath, text, waitTime);
         }
     }
 
@@ -123,9 +167,25 @@ public class AutomatedBrowserBase implements AutomatedBrowser {
     }
 
     @Override
+    public String getTextFromElementWithXPath(String xpath, int waitTime) {
+        if (getAutomatedBrowser() != null) {
+            return getAutomatedBrowser().getTextFromElementWithXPath(xpath, waitTime);
+        }
+
+        return null;
+    }
+
+    @Override
     public void clickElementWithCSSSelector(String cssSelector) {
         if (getAutomatedBrowser() != null) {
             getAutomatedBrowser().clickElementWithCSSSelector(cssSelector);
+        }
+    }
+
+    @Override
+    public void clickElementWithCSSSelector(String cssSelector, int waitTime) {
+        if (getAutomatedBrowser() != null) {
+            getAutomatedBrowser().clickElementWithCSSSelector(cssSelector, waitTime);
         }
     }
 
@@ -137,6 +197,13 @@ public class AutomatedBrowserBase implements AutomatedBrowser {
     }
 
     @Override
+    public void selectOptionByTextFromSelectWithCSSSelector(String optionText, String cssSelector, int waitTime) {
+        if (getAutomatedBrowser() != null) {
+            getAutomatedBrowser().selectOptionByTextFromSelectWithCSSSelector(optionText, cssSelector, waitTime);
+        }
+    }
+
+    @Override
     public void populateElementWithCSSSelector(String cssSelector, String text) {
         if (getAutomatedBrowser() != null) {
             getAutomatedBrowser().populateElementWithCSSSelector(cssSelector, text);
@@ -144,9 +211,25 @@ public class AutomatedBrowserBase implements AutomatedBrowser {
     }
 
     @Override
+    public void populateElementWithCSSSelector(String cssSelector, String text, int waitTime) {
+        if (getAutomatedBrowser() != null) {
+            getAutomatedBrowser().populateElementWithCSSSelector(cssSelector, text, waitTime);
+        }
+    }
+
+    @Override
     public String getTextFromElementWithCSSSelector(String cssSelector) {
         if (getAutomatedBrowser() != null) {
             return getAutomatedBrowser().getTextFromElementWithCSSSelector(cssSelector);
+        }
+
+        return null;
+    }
+
+    @Override
+    public String getTextFromElementWithCSSSelector(String cssSelector, int waitTime) {
+        if (getAutomatedBrowser() != null) {
+            return getAutomatedBrowser().getTextFromElementWithCSSSelector(cssSelector, waitTime);
         }
 
         return null;

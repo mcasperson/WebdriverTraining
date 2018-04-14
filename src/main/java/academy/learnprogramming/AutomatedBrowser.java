@@ -47,17 +47,17 @@ public interface AutomatedBrowser {
 
     void clickElementWithCSSSelector(String cssSelector);
 
-    void clickElementWithCSSSelector(String css, int waitTime);
+    void clickElementWithCSSSelector(String cssSelector, int waitTime);
 
     void selectOptionByTextFromSelectWithCSSSelector(String optionText, String cssSelector);
 
-    void selectOptionByTextFromSelectWithCSSSelector(String optionText, String css, int waitTime);
+    void selectOptionByTextFromSelectWithCSSSelector(String optionText, String cssSelector, int waitTime);
 
     void populateElementWithCSSSelector(String cssSelector, String text);
 
-    void populateElementWithCSSSelector(String css, String text, int waitTime);
+    void populateElementWithCSSSelector(String cssSelector, String text, int waitTime);
 
     String getTextFromElementWithCSSSelector(String cssSelector);
 
-    String getTextFromElementWithCSSSelector(String css, int waitTime);
+    String getTextFromElementWithCSSSelector(String cssSelector, int waitTime);
 }
