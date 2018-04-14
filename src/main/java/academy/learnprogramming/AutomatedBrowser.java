@@ -15,25 +15,49 @@ public interface AutomatedBrowser {
 
     void clickElementWithId(String id);
 
+    void clickElementWithId(String id, int waitTime);
+
     void selectOptionByTextFromSelectWithId(String optionText, String id);
+
+    void selectOptionByTextFromSelectWithId(String optionText, String id, int waitTime);
 
     void populateElementWithId(String id, String text);
 
+    void populateElementWithId(String id, String text, int waitTime);
+
     String getTextFromElementWithId(String id);
+
+    String getTextFromElementWithId(String id, int waitTime);
 
     void clickElementWithXPath(String xpath);
 
+    void clickElementWithXPath(String xpath, int waitTime);
+
     void selectOptionByTextFromSelectWithXPath(String optionText, String xpath);
+
+    void selectOptionByTextFromSelectWithXPath(String optionText, String xpath, int waitTime);
 
     void populateElementWithXPath(String xpath, String text);
 
+    void populateElementWithXPath(String xpath, String text, int waitTime);
+
     String getTextFromElementWithXPath(String xpath);
+
+    String getTextFromElementWithXPath(String xpath, int waitTime);
 
     void clickElementWithCSSSelector(String cssSelector);
 
+    void clickElementWithCSSSelector(String css, int waitTime);
+
     void selectOptionByTextFromSelectWithCSSSelector(String optionText, String cssSelector);
+
+    void selectOptionByTextFromSelectWithCSSSelector(String optionText, String css, int waitTime);
 
     void populateElementWithCSSSelector(String cssSelector, String text);
 
+    void populateElementWithCSSSelector(String css, String text, int waitTime);
+
     String getTextFromElementWithCSSSelector(String cssSelector);
+
+    String getTextFromElementWithCSSSelector(String css, int waitTime);
 }

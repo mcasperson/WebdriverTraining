@@ -63,6 +63,13 @@ public class AutomatedBrowserBase implements AutomatedBrowser {
     }
 
     @Override
+    public void clickElementWithId(String id, int waitTime) {
+        if (getAutomatedBrowser() != null) {
+            getAutomatedBrowser().clickElementWithId(id, waitTime);
+        }
+    }
+
+    @Override
     public void selectOptionByTextFromSelectWithId(String optionText, String id) {
         if (getAutomatedBrowser() != null) {
             getAutomatedBrowser().selectOptionByTextFromSelectWithId(optionText, id);
