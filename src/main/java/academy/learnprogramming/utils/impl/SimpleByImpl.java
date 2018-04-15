@@ -18,18 +18,18 @@ import static java.util.stream.Collectors.toList;
 
 public class SimpleByImpl implements SimpleBy {
     private static final int MILLISECONDS_PER_SECOND = 1000;
-    private static final int TIME_SLICE = 100;
+    private static final int TIME_SLICE = 200;
 
     private final List<Constructor<? extends By>> byConstructors;
 
     public SimpleByImpl() {
         byConstructors = Arrays.asList(
                 getConstructor(By.ById.class),
-                getConstructor(By.ByClassName.class),
+                getConstructor(By.ByXPath.class),
                 getConstructor(By.ByCssSelector.class),
+                getConstructor(By.ByClassName.class),
                 getConstructor(By.ByLinkText.class),
-                getConstructor(By.ByName.class),
-                getConstructor(By.ByXPath.class)
+                getConstructor(By.ByName.class)
         );
     }
 
@@ -55,12 +55,12 @@ public class SimpleByImpl implements SimpleBy {
             String locator,
             int waitTime,
             ExpectedConditionCallback expectedConditionCallback) {
-        long time = -1;
 
         List<By> byInstances = byConstructors.stream()
                 .map(constructor -> getByInstance(constructor, locator))
                 .collect(toList());
 
+        long time = -1;
         while (time < waitTime * MILLISECONDS_PER_SECOND) {
             for (final By by : byInstances) {
                 try {

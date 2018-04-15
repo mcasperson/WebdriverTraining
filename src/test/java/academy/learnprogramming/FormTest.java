@@ -195,24 +195,31 @@ public class FormTest {
     @Test
     public void formTestWithSimpleBy() throws URISyntaxException {
         final AutomatedBrowser automatedBrowser = AUTOMATED_BROWSER_FACTORY.getAutomatedBrowser("Chrome");
+        final String formButtonLocator = "button_element";
+        final String formTextBoxLocator = "text_element";
+        final String formTextAreaLocator = "textarea_element";
+        final String formDropDownListLocator = "[name=select_element]";
+        final String formCheckboxLocator = "//*[@name=\"checkbox1_element\"]";
+        final String messageLocator = "message";
+
         try {
             automatedBrowser.init();
             automatedBrowser.goTo(FormTest.class.getResource("/form.html").toURI().toString());
 
-            automatedBrowser.clickElement("button_element");
-            assertEquals("Button Clicked", automatedBrowser.getTextFromElementWithId("message"));
+            automatedBrowser.clickElement(formButtonLocator);
+            assertEquals("Button Clicked", automatedBrowser.getTextFromElement(messageLocator));
 
-            automatedBrowser.populateElement("text_element", "test text");
-            assertEquals("Text Input Changed", automatedBrowser.getTextFromElementWithId("message"));
+            automatedBrowser.populateElement(formTextBoxLocator, "test text");
+            assertEquals("Text Input Changed", automatedBrowser.getTextFromElement(messageLocator));
 
-            automatedBrowser.populateElement("textarea_element", "test text");
-            assertEquals("Text Area Changed", automatedBrowser.getTextFromElementWithId("message"));
+            automatedBrowser.populateElement(formTextAreaLocator, "test text");
+            assertEquals("Text Area Changed", automatedBrowser.getTextFromElement(messageLocator));
 
-            automatedBrowser.selectOptionByTextFromSelect("Option 2.1", "select_element");
-            assertEquals("Select Changed", automatedBrowser.getTextFromElementWithId("message"));
+            automatedBrowser.selectOptionByTextFromSelect("Option 2.1", formDropDownListLocator);
+            assertEquals("Select Changed", automatedBrowser.getTextFromElement(messageLocator));
 
-            automatedBrowser.clickElement("checkbox2_element");
-            assertEquals("Checkbox Changed", automatedBrowser.getTextFromElementWithId("message"));
+            automatedBrowser.clickElement(formCheckboxLocator);
+            assertEquals("Checkbox Changed", automatedBrowser.getTextFromElement(messageLocator));
         } finally {
             automatedBrowser.destroy();
         }

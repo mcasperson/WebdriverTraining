@@ -14,7 +14,7 @@ import org.openqa.selenium.support.ui.SystemClock;
 import java.util.concurrent.TimeUnit;
 
 public class WebDriverWaitEx extends FluentWait<WebDriver> {
-    public static final long DEFAULT_SLEEP_TIMEOUT = 100;
+    public static final long DEFAULT_SLEEP_TIMEOUT = 10;
     private final WebDriver driver;
 
     public WebDriverWaitEx(final WebDriver driver, final long timeOutInSeconds) {
@@ -43,12 +43,12 @@ public class WebDriverWaitEx extends FluentWait<WebDriver> {
             final WebDriver driver,
             final Clock clock,
             final Sleeper sleeper,
-            final long timeOutInSeconds,
+            final long timeOut,
             final long sleepTimeOut,
             final TimeUnit time) {
 
         super(driver, clock, sleeper);
-        withTimeout(timeOutInSeconds, time);
+        withTimeout(timeOut, time);
         pollingEvery(sleepTimeOut, TimeUnit.MILLISECONDS);
         ignoring(NotFoundException.class);
         this.driver = driver;
