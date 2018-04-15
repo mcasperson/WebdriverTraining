@@ -60,4 +60,20 @@ public interface AutomatedBrowser {
     String getTextFromElementWithCSSSelector(String cssSelector);
 
     String getTextFromElementWithCSSSelector(String cssSelector, int waitTime);
+
+    void clickElementWithName(String name);
+
+    void clickElementWithName(String name, int waitTime);
+
+    void selectOptionByTextFromSelectWithName(String optionText, String name);
+
+    void selectOptionByTextFromSelectWithName(String optionText, String name, int waitTime);
+
+    void populateElementWithName(String name, String text);
+
+    void populateElementWithName(String name, String text, int waitTime);
+
+    String getTextFromElementWithName(String name);
+
+    String getTextFromElementWithName(String name, int waitTime);
 }

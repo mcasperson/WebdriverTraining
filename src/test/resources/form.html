@@ -33,9 +33,11 @@
 <body>
 <div id="message"></div>
 <form id="form_element" onsubmit="interactionMessage('Form Submitted'); return false">
-    <button id="button_element" type="button" onclick="interactionMessage('Button Clicked')">Form Button</button>
-    <input id="text_element" type="text" oninput="interactionMessage('Text Input Changed')">
-    <select id="select_element" onchange="interactionMessage('Select Changed')">
+    <button name="button_element" id="button_element" type="button" onclick="interactionMessage('Button Clicked')">Form
+        Button
+    </button>
+    <input name="text_element" id="text_element" type="text" oninput="interactionMessage('Text Input Changed')">
+    <select name="select_element" id="select_element" onchange="interactionMessage('Select Changed')">
         <optgroup label="Group 1">
             <option id="option1.1_element">Option 1.1</option>
         </optgroup>
@@ -49,21 +51,21 @@
             <option id="option3.3_element">Option 3.3</option>
         </optgroup>
     </select>
-    <textarea id="textarea_element" name="textarea" rows="10" cols="50"
+    <textarea name="textarea_element" id="textarea_element" name="textarea" rows="10" cols="50"
               oninput="interactionMessage('Text Area Changed')"></textarea>
-    <div><input id="radio1_element" type="radio" name="color" value="blue"
+    <div><input name="radio_group" id="radio1_element" type="radio" name="color" value="blue"
                 onchange="interactionMessage('Radio Button Changed')"> Blue
     </div>
-    <div><input id="radio2_element" type="radio" name="color" value="green"
+    <div><input name="radio_group" id="radio2_element" type="radio" name="color" value="green"
                 onchange="interactionMessage('Radio Button Changed')"> Green
     </div>
-    <div><input id="radio3_element" type="radio" name="color" value="red"
+    <div><input name="radio_group" id="radio3_element" type="radio" name="color" value="red"
                 onchange="interactionMessage('Radio Button Changed')"> Red
     </div>
-    <div><input id="checkbox1_element" type="checkbox" name="vehicle" value="Bike"
+    <div><input name="checkbox1_element" id="checkbox1_element" type="checkbox" name="vehicle" value="Bike"
                 onchange="interactionMessage('Checkbox Changed')"> I have a bike
     </div>
-    <div><input id="checkbox2_element" type="checkbox" name="vehicle" value="Car" checked
+    <div><input name="checkbox2_element" id="checkbox2_element" type="checkbox" name="vehicle" value="Car" checked
                 onchange="interactionMessage('Checkbox Changed')"> I have a car
     </div>
     <input id="submit_element" type="submit">

@@ -221,4 +221,64 @@ public class WebDriverDecorator extends AutomatedBrowserBase {
             return wait.until(ExpectedConditions.presenceOfElementLocated((By.cssSelector(css)))).getText();
         }
     }
+
+    @Override
+    public void clickElementWithName(String name) {
+        webDriver.findElement(By.name(name)).click();
+    }
+
+    @Override
+    public void clickElementWithName(String name, int waitTime) {
+        if (waitTime <= 0) {
+            clickElementWithName(name);
+        } else {
+            final WebDriverWait wait = new WebDriverWait(webDriver, waitTime);
+            wait.until(ExpectedConditions.elementToBeClickable((By.name(name)))).click();
+        }
+    }
+
+    @Override
+    public void selectOptionByTextFromSelectWithName(String optionText, String name) {
+        new Select(webDriver.findElement(By.name(name))).selectByVisibleText(optionText);
+    }
+
+    @Override
+    public void selectOptionByTextFromSelectWithName(String optionText, String name, int waitTime) {
+        if (waitTime <= 0) {
+            selectOptionByTextFromSelectWithName(name, optionText);
+        } else {
+            final WebDriverWait wait = new WebDriverWait(webDriver, waitTime);
+            new Select(wait.until(ExpectedConditions.elementToBeClickable((By.name(name))))).selectByVisibleText(optionText);
+        }
+    }
+
+    @Override
+    public void populateElementWithName(String name, String text) {
+        webDriver.findElement(By.name(name)).sendKeys(text);
+    }
+
+    @Override
+    public void populateElementWithName(String name, String text, int waitTime) {
+        if (waitTime <= 0) {
+            populateElementWithName(name, text);
+        } else {
+            final WebDriverWait wait = new WebDriverWait(webDriver, waitTime);
+            wait.until(ExpectedConditions.elementToBeClickable((By.name(name)))).sendKeys(text);
+        }
+    }
+
+    @Override
+    public String getTextFromElementWithName(String name) {
+        return webDriver.findElement(By.name(name)).getText();
+    }
+
+    @Override
+    public String getTextFromElementWithName(String name, int waitTime) {
+        if (waitTime <= 0) {
+            return getTextFromElementWithName(name);
+        } else {
+            final WebDriverWait wait = new WebDriverWait(webDriver, waitTime);
+            return wait.until(ExpectedConditions.presenceOfElementLocated((By.name(name)))).getText();
+        }
+    }
 }

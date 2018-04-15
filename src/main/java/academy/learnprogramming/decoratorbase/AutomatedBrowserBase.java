@@ -234,4 +234,64 @@ public class AutomatedBrowserBase implements AutomatedBrowser {
 
         return null;
     }
+
+    @Override
+    public void clickElementWithName(String name) {
+        if (getAutomatedBrowser() != null) {
+            getAutomatedBrowser().clickElementWithName(name);
+        }
+    }
+
+    @Override
+    public void clickElementWithName(String name, int waitTime) {
+        if (getAutomatedBrowser() != null) {
+            getAutomatedBrowser().clickElementWithName(name, waitTime);
+        }
+    }
+
+    @Override
+    public void selectOptionByTextFromSelectWithName(String optionText, String name) {
+        if (getAutomatedBrowser() != null) {
+            getAutomatedBrowser().selectOptionByTextFromSelectWithName(optionText, name);
+        }
+    }
+
+    @Override
+    public void selectOptionByTextFromSelectWithName(String optionText, String name, int waitTime) {
+        if (getAutomatedBrowser() != null) {
+            getAutomatedBrowser().selectOptionByTextFromSelectWithName(optionText, name, waitTime);
+        }
+    }
+
+    @Override
+    public void populateElementWithName(String name, String text) {
+        if (getAutomatedBrowser() != null) {
+            getAutomatedBrowser().populateElementWithName(name, text);
+        }
+    }
+
+    @Override
+    public void populateElementWithName(String name, String text, int waitTime) {
+        if (getAutomatedBrowser() != null) {
+            getAutomatedBrowser().populateElementWithName(name, text, waitTime);
+        }
+    }
+
+    @Override
+    public String getTextFromElementWithName(String name) {
+        if (getAutomatedBrowser() != null) {
+            return getAutomatedBrowser().getTextFromElementWithName(name);
+        }
+
+        return null;
+    }
+
+    @Override
+    public String getTextFromElementWithName(String name, int waitTime) {
+        if (getAutomatedBrowser() != null) {
+            return getAutomatedBrowser().getTextFromElementWithName(name, waitTime);
+        }
+
+        return null;
+    }
 }
