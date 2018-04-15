@@ -2,6 +2,8 @@ package academy.learnprogramming.decorators;
 
 import academy.learnprogramming.AutomatedBrowser;
 import academy.learnprogramming.decoratorbase.AutomatedBrowserBase;
+import academy.learnprogramming.utils.SimpleBy;
+import academy.learnprogramming.utils.impl.SimpleByImpl;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -9,6 +11,8 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WebDriverDecorator extends AutomatedBrowserBase {
+    private static final SimpleBy SIMPLE_BY = new SimpleByImpl();
+
     private WebDriver webDriver;
 
     public WebDriverDecorator() {
@@ -280,5 +284,61 @@ public class WebDriverDecorator extends AutomatedBrowserBase {
             final WebDriverWait wait = new WebDriverWait(webDriver, waitTime);
             return wait.until(ExpectedConditions.presenceOfElementLocated((By.name(name)))).getText();
         }
+    }
+
+    @Override
+    public void clickElement(String locator) {
+        clickElement(locator, 0);
+    }
+
+    @Override
+    public void clickElement(String locator, int waitTime) {
+        SIMPLE_BY.getElement(
+                getWebDriver(),
+                locator,
+                waitTime,
+                by -> ExpectedConditions.elementToBeClickable(by)).click();
+    }
+
+    @Override
+    public void selectOptionByTextFromSelect(String optionText, String locator) {
+        selectOptionByTextFromSelect(optionText, locator, 0);
+    }
+
+    @Override
+    public void selectOptionByTextFromSelect(String optionText, String locator, int waitTime) {
+        new Select(SIMPLE_BY.getElement(
+                getWebDriver(),
+                locator,
+                waitTime,
+                by -> ExpectedConditions.elementToBeClickable(by))).selectByVisibleText(optionText);
+    }
+
+    @Override
+    public void populateElement(String locator, String text) {
+        populateElement(locator, text, 0);
+    }
+
+    @Override
+    public void populateElement(String locator, String text, int waitTime) {
+        SIMPLE_BY.getElement(
+                getWebDriver(),
+                locator,
+                waitTime,
+                by -> ExpectedConditions.elementToBeClickable(by)).sendKeys(text);
+    }
+
+    @Override
+    public String getTextFromElement(String locator) {
+        return getTextFromElement(locator, 0);
+    }
+
+    @Override
+    public String getTextFromElement(String locator, int waitTime) {
+        return SIMPLE_BY.getElement(
+                getWebDriver(),
+                locator,
+                waitTime,
+                by -> ExpectedConditions.presenceOfElementLocated(by)).getText();
     }
 }

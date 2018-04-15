@@ -76,4 +76,20 @@ public interface AutomatedBrowser {
     String getTextFromElementWithName(String name);
 
     String getTextFromElementWithName(String name, int waitTime);
+
+    void clickElement(String locator);
+
+    void clickElement(String locator, int waitTime);
+
+    void selectOptionByTextFromSelect(String optionText, String locator);
+
+    void selectOptionByTextFromSelect(String optionText, String locator, int waitTime);
+
+    void populateElement(String locator, String text);
+
+    void populateElement(String locator, String text, int waitTime);
+
+    String getTextFromElement(String locator);
+
+    String getTextFromElement(String locator, int waitTime);
 }
