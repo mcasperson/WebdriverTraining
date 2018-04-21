@@ -1,9 +1,6 @@
 package academy.learnprogramming;
 
-import academy.learnprogramming.decorators.ChromeDecorator;
-import academy.learnprogramming.decorators.FirefoxDecorator;
-import academy.learnprogramming.decorators.ImplicitWaitDecorator;
-import academy.learnprogramming.decorators.WebDriverDecorator;
+import academy.learnprogramming.decorators.*;
 
 public class AutomatedBrowserFactory {
     public AutomatedBrowser getAutomatedBrowser(String browser) {
@@ -29,14 +26,18 @@ public class AutomatedBrowserFactory {
     private AutomatedBrowser getChromeBrowser(final boolean headless) {
         return new ChromeDecorator(headless,
                 new ImplicitWaitDecorator(10,
-                        new WebDriverDecorator()
+                        new BrowserMobDecorator(
+                                new WebDriverDecorator()
+                        )
                 )
         );
     }
 
     private AutomatedBrowser getFirefoxBrowser(final boolean headless) {
         return new FirefoxDecorator(headless,
-                new WebDriverDecorator()
+                new BrowserMobDecorator(
+                        new WebDriverDecorator()
+                )
         );
     }
 }

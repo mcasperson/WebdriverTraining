@@ -41,7 +41,7 @@ public class AutomatedBrowserBase implements AutomatedBrowser {
             return getAutomatedBrowser().getDesiredCapabilities();
         }
 
-        return null;
+        return new DesiredCapabilities();
     }
 
     @Override
