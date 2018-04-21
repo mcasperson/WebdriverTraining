@@ -35,8 +35,10 @@ public class AutomatedBrowserFactory {
 
     private AutomatedBrowser getFirefoxBrowser(final boolean headless) {
         return new FirefoxDecorator(headless,
-                new BrowserMobDecorator(
-                        new WebDriverDecorator()
+                new ImplicitWaitDecorator(10,
+                        new BrowserMobDecorator(
+                                new WebDriverDecorator()
+                        )
                 )
         );
     }

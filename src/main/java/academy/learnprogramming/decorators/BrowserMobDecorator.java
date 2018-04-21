@@ -20,13 +20,13 @@ public class BrowserMobDecorator extends AutomatedBrowserBase {
         proxy = new BrowserMobProxyServer();
         proxy.start(0);
 
-        final DesiredCapabilities desiredCapabilities = getAutomatedBrowser().getDesiredCapabilities();
-
         final Proxy seleniumProxy = new Proxy();
         final String proxyStr = "localhost:" + proxy.getPort();
 
         seleniumProxy.setHttpProxy(proxyStr);
         seleniumProxy.setSslProxy(proxyStr);
+
+        final DesiredCapabilities desiredCapabilities = getAutomatedBrowser().getDesiredCapabilities();
 
         desiredCapabilities.setCapability(CapabilityType.PROXY, seleniumProxy);
 
