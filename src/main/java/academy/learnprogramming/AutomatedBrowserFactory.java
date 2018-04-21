@@ -8,26 +8,34 @@ import academy.learnprogramming.decorators.WebDriverDecorator;
 public class AutomatedBrowserFactory {
     public AutomatedBrowser getAutomatedBrowser(String browser) {
         if ("Chrome".equalsIgnoreCase(browser)) {
-            return getChromeBrowser();
+            return getChromeBrowser(false);
+        }
+
+        if ("ChromeHeadless".equalsIgnoreCase(browser)) {
+            return getChromeBrowser(true);
         }
 
         if ("Firefox".equalsIgnoreCase(browser)) {
-            return getFirefoxBrowser();
+            return getFirefoxBrowser(false);
+        }
+
+        if ("FirefoxHeadless".equalsIgnoreCase(browser)) {
+            return getFirefoxBrowser(false);
         }
 
         throw new IllegalArgumentException("Unknown browser " + browser);
     }
 
-    private AutomatedBrowser getChromeBrowser() {
-        return new ChromeDecorator(
+    private AutomatedBrowser getChromeBrowser(final boolean headless) {
+        return new ChromeDecorator(headless,
                 new ImplicitWaitDecorator(10,
                         new WebDriverDecorator()
                 )
         );
     }
 
-    private AutomatedBrowser getFirefoxBrowser() {
-        return new FirefoxDecorator(
+    private AutomatedBrowser getFirefoxBrowser(final boolean headless) {
+        return new FirefoxDecorator(headless,
                 new WebDriverDecorator()
         );
     }

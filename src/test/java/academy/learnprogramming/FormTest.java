@@ -194,7 +194,7 @@ public class FormTest {
 
     @Test
     public void formTestWithSimpleBy() throws URISyntaxException {
-        final AutomatedBrowser automatedBrowser = AUTOMATED_BROWSER_FACTORY.getAutomatedBrowser("Chrome");
+        final AutomatedBrowser automatedBrowser = AUTOMATED_BROWSER_FACTORY.getAutomatedBrowser("FirefoxHeadless");
         final String formButtonLocator = "button_element";
         final String formTextBoxLocator = "text_element";
         final String formTextAreaLocator = "textarea_element";
