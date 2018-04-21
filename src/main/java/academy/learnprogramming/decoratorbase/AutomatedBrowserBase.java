@@ -2,6 +2,7 @@ package academy.learnprogramming.decoratorbase;
 
 import academy.learnprogramming.AutomatedBrowser;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class AutomatedBrowserBase implements AutomatedBrowser {
     private AutomatedBrowser automatedBrowser;
@@ -32,6 +33,15 @@ public class AutomatedBrowserBase implements AutomatedBrowser {
         if (getAutomatedBrowser() != null) {
             getAutomatedBrowser().setWebDriver(webDriver);
         }
+    }
+
+    @Override
+    public DesiredCapabilities getDesiredCapabilities() {
+        if (getAutomatedBrowser() != null) {
+            return getAutomatedBrowser().getDesiredCapabilities();
+        }
+
+        return null;
     }
 
     @Override
