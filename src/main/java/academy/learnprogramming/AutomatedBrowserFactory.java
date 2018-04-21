@@ -20,7 +20,7 @@ public class AutomatedBrowserFactory {
         }
 
         if ("FirefoxHeadless".equalsIgnoreCase(browser)) {
-            return getFirefoxBrowser(false);
+            return getFirefoxBrowser(true);
         }
 
         throw new IllegalArgumentException("Unknown browser " + browser);
