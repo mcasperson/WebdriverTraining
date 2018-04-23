@@ -204,6 +204,9 @@ public class FormTest {
 
         try {
             automatedBrowser.init();
+
+            automatedBrowser.captureHarFile();
+
             automatedBrowser.goTo(FormTest.class.getResource("/form.html").toURI().toString());
 
             automatedBrowser.clickElement(formButtonLocator);
@@ -221,7 +224,11 @@ public class FormTest {
             automatedBrowser.clickElement(formCheckboxLocator);
             assertEquals("Checkbox Changed", automatedBrowser.getTextFromElement(messageLocator));
         } finally {
-            automatedBrowser.destroy();
+            try {
+                automatedBrowser.saveHarFile("test.har");
+            } finally {
+                automatedBrowser.destroy();
+            }
         }
     }
 }

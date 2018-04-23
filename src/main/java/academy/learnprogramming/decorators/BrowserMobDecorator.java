@@ -2,11 +2,15 @@ package academy.learnprogramming.decorators;
 
 import academy.learnprogramming.AutomatedBrowser;
 import academy.learnprogramming.decoratorbase.AutomatedBrowserBase;
+import academy.learnprogramming.exceptions.SaveException;
 import net.lightbody.bmp.BrowserMobProxy;
 import net.lightbody.bmp.BrowserMobProxyServer;
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+
+import java.io.File;
+import java.io.IOException;
 
 public class BrowserMobDecorator extends AutomatedBrowserBase {
     private BrowserMobProxy proxy;
@@ -38,6 +42,20 @@ public class BrowserMobDecorator extends AutomatedBrowserBase {
         getAutomatedBrowser().destroy();
         if (proxy != null) {
             proxy.stop();
+        }
+    }
+
+    @Override
+    public void captureHarFile() {
+        proxy.newHar();
+    }
+
+    @Override
+    public void saveHarFile(final String file) {
+        try {
+            proxy.getHar().writeTo(new File(file));
+        } catch (final IOException ex) {
+            throw new SaveException(ex);
         }
     }
 }

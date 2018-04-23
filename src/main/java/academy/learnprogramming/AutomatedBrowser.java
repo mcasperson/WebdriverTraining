@@ -95,4 +95,8 @@ public interface AutomatedBrowser {
     String getTextFromElement(String locator);
 
     String getTextFromElement(String locator, int waitTime);
+
+    void captureHarFile();
+
+    void saveHarFile(String file);
 }
