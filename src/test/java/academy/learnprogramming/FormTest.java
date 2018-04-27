@@ -224,6 +224,20 @@ public class FormTest {
             automatedBrowser.clickElement(formCheckboxLocator);
             assertEquals("Checkbox Changed", automatedBrowser.getTextFromElement(messageLocator));
         } finally {
+            automatedBrowser.destroy();
+        }
+    }
+
+    @Test
+    public void captureHarFile() throws URISyntaxException {
+        final AutomatedBrowser automatedBrowser = AUTOMATED_BROWSER_FACTORY.getAutomatedBrowser("FirefoxHeadless");
+        try {
+            automatedBrowser.init();
+
+            automatedBrowser.captureHarFile();
+
+            automatedBrowser.goTo("https://learnprogramming.academy/");
+        } finally {
             try {
                 automatedBrowser.saveHarFile("test.har");
             } finally {
