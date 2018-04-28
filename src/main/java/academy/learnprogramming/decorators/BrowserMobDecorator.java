@@ -38,8 +38,6 @@ public class BrowserMobDecorator extends AutomatedBrowserBase {
         final DesiredCapabilities desiredCapabilities = getAutomatedBrowser().getDesiredCapabilities();
 
         desiredCapabilities.setCapability(CapabilityType.PROXY, seleniumProxy);
-        desiredCapabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
-        desiredCapabilities.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
 
         return desiredCapabilities;
     }
