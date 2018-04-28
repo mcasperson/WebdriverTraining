@@ -32,10 +32,10 @@ public class ProxyTest {
 
         automatedBrowser.init();
 
-        automatedBrowser.alterResponseFrom(".*?\\.png", 201);
-        automatedBrowser.alterResponseFrom(".*?twitter\\.com.*", 500);
-        automatedBrowser.alterResponseFrom(".*?google\\.com.*", 500);
-        automatedBrowser.alterResponseFrom(".*?facebook\\.com.*", 500);
+        automatedBrowser.alterRequestTo(".*?\\.png", 201);
+        automatedBrowser.alterRequestTo(".*?twitter\\.com.*", 500);
+        automatedBrowser.alterRequestTo(".*?google\\.com.*", 500);
+        automatedBrowser.alterRequestTo(".*?facebook\\.com.*", 500);
 
         automatedBrowser.goTo("https://learnprogramming.academy/");
     }

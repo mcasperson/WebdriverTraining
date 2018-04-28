@@ -67,7 +67,7 @@ public class BrowserMobDecorator extends AutomatedBrowserBase {
     }
 
     @Override
-    public void alterResponseFrom(String url, int responseCode) {
+    public void alterRequestTo(String url, int responseCode) {
         proxy.addRequestFilter((request, contents, messageInfo) -> {
             if (Pattern.compile(url).matcher(messageInfo.getOriginalUrl()).matches()) {
                 final HttpResponse response = new DefaultHttpResponse(request.getProtocolVersion(), HttpResponseStatus.valueOf(responseCode));
@@ -78,7 +78,7 @@ public class BrowserMobDecorator extends AutomatedBrowserBase {
             return null;
         });
 
-        getAutomatedBrowser().alterResponseFrom(url, responseCode);
+        getAutomatedBrowser().alterRequestTo(url, responseCode);
     }
 
     @Override
@@ -90,6 +90,6 @@ public class BrowserMobDecorator extends AutomatedBrowserBase {
             }
         });
 
-        getAutomatedBrowser().alterResponseFrom(url, responseCode);
+        getAutomatedBrowser().alterResponseFrom(url, responseCode, responseBody);
     }
 }
