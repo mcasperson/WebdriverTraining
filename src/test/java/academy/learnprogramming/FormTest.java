@@ -245,4 +245,18 @@ public class FormTest {
             }
         }
     }
+
+    @Test
+    public void modifyRequests() {
+        final AutomatedBrowser automatedBrowser = AUTOMATED_BROWSER_FACTORY.getAutomatedBrowser("Firefox");
+
+        automatedBrowser.init();
+
+        automatedBrowser.alterRequestTo(".*?\\.png", 201);
+        automatedBrowser.alterRequestTo(".*?twitter\\.com.*", 500);
+        automatedBrowser.alterRequestTo(".*?google\\.com.*", 500);
+        automatedBrowser.alterRequestTo(".*?facebook\\.com.*", 500);
+
+        automatedBrowser.goTo("https://learnprogramming.academy/");
+    }
 }

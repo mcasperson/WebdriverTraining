@@ -378,4 +378,11 @@ public class AutomatedBrowserBase implements AutomatedBrowser {
             getAutomatedBrowser().saveHarFile(file);
         }
     }
+
+    @Override
+    public void alterRequestTo(String url, int responseCode) {
+        if (getAutomatedBrowser() != null) {
+            getAutomatedBrowser().alterRequestTo(url, responseCode);
+        }
+    }
 }

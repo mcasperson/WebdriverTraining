@@ -99,4 +99,6 @@ public interface AutomatedBrowser {
     void captureHarFile();
 
     void saveHarFile(String file);
+
+    void alterRequestTo(String url, int responseCode);
 }
