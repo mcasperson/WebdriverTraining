@@ -100,5 +100,7 @@ public interface AutomatedBrowser {
 
     void saveHarFile(String file);
 
-    void alterRequestTo(String url, int responseCode);
+    void alterResponseFrom(String url, int responseCode);
+
+    void alterResponseFrom(String url, int responseCode, String responseBody);
 }

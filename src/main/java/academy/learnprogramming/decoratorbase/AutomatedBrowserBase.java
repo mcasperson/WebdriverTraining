@@ -380,9 +380,16 @@ public class AutomatedBrowserBase implements AutomatedBrowser {
     }
 
     @Override
-    public void alterRequestTo(String url, int responseCode) {
+    public void alterResponseFrom(String url, int responseCode) {
         if (getAutomatedBrowser() != null) {
-            getAutomatedBrowser().alterRequestTo(url, responseCode);
+            getAutomatedBrowser().alterResponseFrom(url, responseCode);
+        }
+    }
+
+    @Override
+    public void alterResponseFrom(String url, int responseCode, String responseBody) {
+        if (getAutomatedBrowser() != null) {
+            getAutomatedBrowser().alterResponseFrom(url, responseCode, responseBody);
         }
     }
 }
