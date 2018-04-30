@@ -20,6 +20,10 @@ public class AutomatedBrowserFactory {
             return getFirefoxBrowser(true);
         }
 
+        if ("BrowserStackEdge".equalsIgnoreCase(browser)) {
+            return getBrowserStackEdge();
+        }
+
         throw new IllegalArgumentException("Unknown browser " + browser);
     }
 
@@ -37,6 +41,16 @@ public class AutomatedBrowserFactory {
         return new FirefoxDecorator(headless,
                 new ImplicitWaitDecorator(10,
                         new BrowserMobDecorator(
+                                new WebDriverDecorator()
+                        )
+                )
+        );
+    }
+
+    private AutomatedBrowser getBrowserStackEdge() {
+        return new BrowserStackDecorator(
+                new BrowserStackEdgeDecorator(
+                        new ImplicitWaitDecorator(10,
                                 new WebDriverDecorator()
                         )
                 )

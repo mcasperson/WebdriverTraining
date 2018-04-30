@@ -227,4 +227,40 @@ public class FormTest {
             automatedBrowser.destroy();
         }
     }
+
+    @Test
+    public void browserStackTest() throws URISyntaxException {
+        final AutomatedBrowser automatedBrowser = AUTOMATED_BROWSER_FACTORY.getAutomatedBrowser("BrowserStackEdge");
+        final String formButtonLocator = "button_element";
+        final String formTextBoxLocator = "text_element";
+        final String formTextAreaLocator = "textarea_element";
+        final String formDropDownListLocator = "[name=select_element]";
+        final String formCheckboxLocator = "//*[@name=\"checkbox1_element\"]";
+        final String messageLocator = "message";
+
+        try {
+            automatedBrowser.init();
+
+            automatedBrowser.captureHarFile();
+
+            automatedBrowser.goTo("https://s3.amazonaws.com/webdriver-tests/form.html");
+
+            automatedBrowser.clickElement(formButtonLocator);
+            assertEquals("Button Clicked", automatedBrowser.getTextFromElement(messageLocator));
+
+            automatedBrowser.populateElement(formTextBoxLocator, "test text");
+            assertEquals("Text Input Changed", automatedBrowser.getTextFromElement(messageLocator));
+
+            automatedBrowser.populateElement(formTextAreaLocator, "test text");
+            assertEquals("Text Area Changed", automatedBrowser.getTextFromElement(messageLocator));
+
+            automatedBrowser.selectOptionByTextFromSelect("Option 2.1", formDropDownListLocator);
+            assertEquals("Select Changed", automatedBrowser.getTextFromElement(messageLocator));
+
+            automatedBrowser.clickElement(formCheckboxLocator);
+            assertEquals("Checkbox Changed", automatedBrowser.getTextFromElement(messageLocator));
+        } finally {
+            automatedBrowser.destroy();
+        }
+    }
 }
