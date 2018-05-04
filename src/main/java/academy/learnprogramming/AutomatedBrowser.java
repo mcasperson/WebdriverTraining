@@ -103,4 +103,6 @@ public interface AutomatedBrowser {
     void alterRequestTo(String url, int responseCode);
 
     void alterResponseFrom(String url, int responseCode, String responseBody);
+
+    void maximizeWindow();
 }

@@ -341,4 +341,9 @@ public class WebDriverDecorator extends AutomatedBrowserBase {
                 waitTime,
                 by -> ExpectedConditions.presenceOfElementLocated(by)).getText();
     }
+
+    @Override
+    public void maximizeWindow() {
+        webDriver.manage().window().maximize();
+    }
 }

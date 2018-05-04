@@ -24,6 +24,10 @@ public class AutomatedBrowserFactory {
             return getBrowserStackEdge();
         }
 
+        if ("BrowserStackAndroid".equalsIgnoreCase(browser)) {
+            return getBrowserStackAndroid();
+        }
+
         throw new IllegalArgumentException("Unknown browser " + browser);
     }
 
@@ -50,6 +54,16 @@ public class AutomatedBrowserFactory {
     private AutomatedBrowser getBrowserStackEdge() {
         return new BrowserStackDecorator(
                 new BrowserStackEdgeDecorator(
+                        new ImplicitWaitDecorator(10,
+                                new WebDriverDecorator()
+                        )
+                )
+        );
+    }
+
+    private AutomatedBrowser getBrowserStackAndroid() {
+        return new BrowserStackDecorator(
+                new BrowserStackAndroidDecorator(
                         new ImplicitWaitDecorator(10,
                                 new WebDriverDecorator()
                         )

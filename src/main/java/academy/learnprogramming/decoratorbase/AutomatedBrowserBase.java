@@ -392,4 +392,11 @@ public class AutomatedBrowserBase implements AutomatedBrowser {
             getAutomatedBrowser().alterResponseFrom(url, responseCode, responseBody);
         }
     }
+
+    @Override
+    public void maximizeWindow() {
+        if (getAutomatedBrowser() != null) {
+            getAutomatedBrowser().maximizeWindow();
+        }
+    }
 }
