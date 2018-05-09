@@ -243,7 +243,7 @@ public class FormTest {
 
             automatedBrowser.maximizeWindow();
 
-            automatedBrowser.goTo("https://s3.amazonaws.com/webdriver-tests/form.html");
+            automatedBrowser.goTo("https://s3.amazonaws.com/webdriver-testing-website/form.html");
 
             automatedBrowser.clickElement(formButtonLocator);
             assertEquals("Button Clicked", automatedBrowser.getTextFromElement(messageLocator));
@@ -279,7 +279,7 @@ public class FormTest {
 
             automatedBrowser.maximizeWindow();
 
-            automatedBrowser.goTo("https://s3.amazonaws.com/webdriver-tests/form.html");
+            automatedBrowser.goTo("https://s3.amazonaws.com/webdriver-testing-website/form.html");
 
             automatedBrowser.clickElement(formButtonLocator);
             assertEquals("Button Clicked", automatedBrowser.getTextFromElement(messageLocator));
